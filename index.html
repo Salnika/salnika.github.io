@@ -3,66 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowbit - Suivi d'habitudes intelligent</title>
+    <title>Flowbit - Cultivez vos habitudes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #FDFDFD;
+            --card-bg: #FFFFFF;
+            --primary-color: #00AEEF;
+            --primary-hover: #0095c7;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #E0E0E0;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --visual-bg: rgba(0, 174, 239, 0.08);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            text-align: center;
-            background: #121212;
-            color: white;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px 20px;
         }
 
         h1 {
-            font-size: 2.5em;
-            color: #008CFF;
+            font-size: 3.2em;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: var(--text-primary);
+            letter-spacing: -1px;
         }
+        h1 .highlight { color: var(--primary-color); }
 
-        p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 20px auto;
+        p.subtitle {
+            font-size: 1.25em;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 14px 32px;
+            font-size: 1.05em;
+            font-weight: 600;
             color: white;
-            background: #008CFF;
+            background-color: var(--primary-color);
             text-decoration: none;
             border-radius: 8px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
+            border: none;
         }
-
         .cta-button:hover {
-            background: #0070CC;
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 174, 239, 0.3);
         }
 
+        .qr-container {
+            margin-top: 45px; display: flex; flex-direction: column; align-items: center;
+        }
         .qr-code {
-            width: 150px;
-            margin-top: 20px;
+            width: 120px; height: 120px; padding: 8px; background: var(--card-bg);
+            border-radius: 10px; box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+        .qr-text { color: var(--text-secondary); font-size: 0.9em; margin-top: 12px; }
+
+        .features-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .feature-text p {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .feature-visual {
+            flex-basis: 300px;
+            height: 200px;
+            background-color: var(--visual-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.1);
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #888;
+            text-align: center; padding: 30px 20px; color: var(--text-secondary);
+            font-size: 0.9em; margin-top: 40px; border-top: 1px solid var(--border-color);
         }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            p.subtitle { font-size: 1.1em; }
+
+            .feature-row,
+            .feature-row:nth-child(even) {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+            .feature-visual {
+                flex-basis: auto;
+                width: 80%;
+                max-width: 300px;
+                height: 180px;
+                margin: 0 auto;
+            }
+            .feature-text h3 { font-size: 1.5em; }
+            .feature-text p { font-size: 1em; }
+        }
+
     </style>
 </head>
 <body>
-    <h1>Flowbit</h1>
-    <p>L'application qui t'aide à suivre tes habitudes de manière intelligente et flexible.</p>
-    <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
-    <br>
-    <img src="assets/qr.png" alt="QR Code" class="qr-code">
-    <footer>© 2025 Flowbit. Tous droits réservés gi.</footer>
+    <header>
+        <div class="container">
+            <h1><span class="highlight">Flowbit</span></h1>
+            <p class="subtitle">Cultivez vos habitudes sans effort. L'application intuitive pensée pour un esprit clair et concentré.</p>
+            <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
+            <div class="qr-container">
+                <img src="assets/qr.png" alt="QR Code pour télécharger Flowbit" class="qr-code">
+                 <span class="qr-text">Scannez pour télécharger</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="features-section container">
+
+            <div class="feature-row">
+                <div class="feature-visual">🎯</div>
+                <div class="feature-text">
+                    <h3>Suivi Intelligent</h3>
+                    <p>Adapte le suivi à votre rythme unique, sans jugement ni pression constante. Flowbit apprend de vos habitudes.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-visual">🧘</div>
+                <div class="feature-text">
+                    <h3>Mode Concentration</h3>
+                    <p>Minimise les distractions de l'interface pour vous aider à rester focalisé sur l'accomplissement de votre tâche actuelle.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-visual">🔔</div>
+                <div class="feature-text">
+                    <h3>Rappels Flexibles</h3>
+                    <p>Recevez des notifications utiles et non intrusives, configurables pour s'adapter parfaitement à votre emploi du temps.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-visual">🗓️</div>
+                <div class="feature-text">
+                    <h3>Vue Hebdomadaire Claire</h3>
+                    <p>Visualisez vos progrès et vos réussites d'un seul coup d'œil grâce à un affichage coloré et motivant.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-visual">🔍</div>
+                <div class="feature-text">
+                    <h3>Localisateur d'Objets</h3>
+                    <p>Ne perdez plus de temps ! Utilisez le module "Où est mon truc ?" pour retrouver facilement vos affaires importantes.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-visual">⭐</div>
+                <div class="feature-text">
+                    <h3>P.E.T</h3>
+                    <p>Petit Expert Tactic : Votre allié stratégique pour identifier et vous concentrer sur les tâches réellement essentielles.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            © 2025 Flowbit. Tous droits réservés.
+        </div>
+    </footer>
+
 </body>
 </html>
