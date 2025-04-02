@@ -3,81 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowbit - Suivi d'habitudes intelligent</title>
-    <script>
-        function checkAndRedirect() {
-    const appUrl = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/c7a26e9e-d06c-4d08-b5e9-af85391de765'; // Ton lien Expo
-
-    const isAndroid = /android/i.test(navigator.userAgent);
-    const storeUrl = isAndroid
-        ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play Store pour Expo Go
-        : 'https://apps.apple.com/us/app/expo-go/id982107779'; // Apple App Store pour Expo Go
-
-    const TRIES_TIMEOUT = 2500; // Temps en millisecondes avant de considérer que l'app n'a pas ouvert
-    const start = Date.now();
-
-    const fallbackTimeout = setTimeout(function() {
-        // Vérifie si suffisamment de temps s'est écoulé (au cas où le timeout se déclenche trop tôt)
-        if (Date.now() - start < TRIES_TIMEOUT + 500) { // Ajoute une petite marge
-             window.location.href = storeUrl;
-        }
-    }, TRIES_TIMEOUT);
-
-    window.location.href = appUrl;
-
-    window.addEventListener('blur', function() {
-        clearTimeout(fallbackTimeout);
-    });
-    document.addEventListener('visibilitychange', function handleVisibilityChange() {
-        if (document.hidden) {
-            clearTimeout(fallbackTimeout);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-        }
-    });
-
-}
-
-window.onload = function() {
-    setTimeout(checkAndRedirect, 500); // Attends 0.5 seconde avant de lancer la tentative
-}
-
-    </script>
+    <title>Flowbit - Preview Update</title>
+    <!-- Inclure Tailwind CSS via CDN pour le test -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Styles de base */
         body {
-            font-family: 'Inter', sans-serif;
-            text-align: center;
+            font-family: 'Inter', sans-serif; /* Assurez-vous d'importer cette police */
             background: #121212;
             color: white;
-            margin: 0;
-            padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
+        /* Couleurs de base si non définies par Tailwind (Adaptez selon votre config) */
+        .text-default { color: #e0e0e0; }
+        .text-secondary { color: #aaaaaa; }
+        .bg-default { background-color: #1e1e1e; }
+        .border-secondary { border-color: #333333; }
+        .text-icon-default { color: #cccccc; }
+        .heading-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .icon-md { width: 1.5rem; height: 1.5rem; }
 
-        h1 {
-            font-size: 2.5em;
-            color: #008CFF;
-        }
-
-        p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #888;
-        }
+        /* Styles additionnels pour les boutons si besoin (Tailwind devrait suffire) */
+        /* .action-button {
+            display: block; /* Pour prendre toute la largeur */
+           /* padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 10px; /* Espace entre les boutons */
+       /* }
+        .action-button:last-child {
+            margin-bottom: 0;
+        } */
     </style>
+    <script>
+        const APP_URL = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/c7a26e9e-d06c-4d08-b5e9-af85391de765'; // Lien Expo
+
+        function getStoreUrl() {
+            const isAndroid = /android/i.test(navigator.userAgent);
+            return isAndroid
+                ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play
+                : 'https://apps.apple.com/us/app/expo-go/id982107779'; // App Store
+        }
+
+        function tryOpenApp() {
+            // Tente d'ouvrir l'application via l'URL personnalisée
+            window.location.href = APP_URL;
+        }
+
+        function redirectToStore() {
+            // Redirige vers le store approprié
+            window.location.href = getStoreUrl();
+        }
+
+        // La redirection automatique est toujours commentée pour éviter les conflits avec le scan QR
+        // window.onload = function() {
+        //     setTimeout(checkAndRedirectAutomatically, 1000);
+        // }
+        // function checkAndRedirectAutomatically() { ... } // Fonction conservée si besoin mais non appelée au chargement
+    </script>
 </head>
 <body>
-    <h1>Flowbit</h1>
-    <p>L'application qui t'aide à suivre tes habitudes de manière intelligente et flexible.</p>
-    <p>Si tu as Expo Go installé, tu seras redirigé vers l'app. Sinon, tu seras dirigé vers le store pour l'installer.</p>
+
+    <div class="rounded-md border border-secondary bg-default shadow-xs min-w-[320px] sm:min-w-[500px] w-full max-w-lg">
+        <!-- Header -->
+        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4">
+            <div class="flex items-center justify-between gap-y-3 max-md-gutters:flex-col max-md-gutters:items-start">
+                <div class="grid overflow-hidden">
+                    <div class="grid items-center gap-3 overflow-hidden grid-cols-[min-content,auto]">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-md text-icon-default shrink-0" role="img">
+                            <g> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12.0001L2 14.5001L11.6422 19.3212C11.7734 19.3868 11.839 19.4196 11.9078 19.4325C11.9687 19.4439 12.0313 19.4439 12.0922 19.4325C12.161 19.4196 12.2266 19.3868 12.3578 19.3212L22 14.5001L17 12.0001M2 9.50006L11.6422 4.67895C11.7734 4.61336 11.839 4.58056 11.9078 4.56766C11.9687 4.55622 12.0313 4.55622 12.0922 4.56766C12.161 4.58056 12.2266 4.61336 12.3578 4.67895L22 9.50006L12.3578 14.3212C12.2266 14.3868 12.161 14.4196 12.0922 14.4325C12.0313 14.4439 11.9687 14.4439 11.9078 14.4325C11.839 14.4196 11.7734 14.3868 11.6422 14.3212L2 9.50006Z"></path> </g>
+                        </svg>
+                        <h3 class="text-default font-semibold heading-lg">Preview update</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Infos -->
+        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4">
+            <p class="text-default font-medium break-words">Flowbit App Preview</p>
+            <div class="flex justify-between gap-6 mt-2">
+                <p class="text-secondary flex-initial text-sm">Runtime version</p>
+                <p class="text-secondary w-full flex-1 truncate text-right text-sm">Compatible Expo Go</p>
+            </div>
+            <div class="flex justify-between mt-1">
+                <p class="text-secondary text-sm">Published</p>
+                <p class="text-secondary text-sm">Dernière mise à jour</p>
+            </div>
+        </div>
+        <!-- QR Code Section -->
+        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
+            <p class="text-default">Scannez le QR code avec l'appareil où Expo Go est installé :</p>
+            <div class="relative flex items-center justify-center">
+                <img src="https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=c7a26e9e-d06c-4d08-b5e9-af85391de765&host=u.expo.dev" class="size-[250px]" alt="QR Code pour ouvrir dans Expo Go">
+            </div>
+        </div>
+        <!-- Actions Section (avec deux boutons) -->
+        <div class="px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
+            <p class="text-default text-sm mb-1">Ou utilisez ces options :</p>
+            <!-- Bouton pour ouvrir dans Expo Go -->
+            <button onclick="tryOpenApp()" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
+                Ouvrir dans Expo Go
+            </button>
+            <!-- Bouton pour installer Expo Go -->
+            <button onclick="redirectToStore()" class="w-full text-center bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
+                Installer Expo Go (Store)
+            </button>
+        </div>
+        <!-- Section Advanced supprimée -->
+    </div>
+
 </body>
 </html>
