@@ -6,24 +6,41 @@
     <title>Flowbit - Suivi d'habitudes intelligent</title>
     <script>
         function checkAndRedirect() {
-            // Vérifie si l'utilisateur utilise Expo Go
-            const isExpoGoInstalled = /expo/.test(navigator.userAgent.toLowerCase());
+    const appUrl = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/c7a26e9e-d06c-4d08-b5e9-af85391de765'; // Ton lien Expo
 
-            if (isExpoGoInstalled) {
-                // Si Expo Go est installé, redirige vers l'application sur Expo
-                window.location.href = 'https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=e96fbddc-f666-4bd6-a996-da4844ef952e&host=u.expo.dev'; // Remplace avec ton lien Expo
-            } else {
-                // Sinon, redirige vers le store pour installer Expo Go
-                const storeUrl = (navigator.userAgent.indexOf('Android') !== -1) 
-                    ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play
-                    : 'https://apps.apple.com/us/app/expo-go/id982107779'; // App Store
-                window.location.href = storeUrl;
-            }
-        }
+    const isAndroid = /android/i.test(navigator.userAgent);
+    const storeUrl = isAndroid
+        ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play Store pour Expo Go
+        : 'https://apps.apple.com/us/app/expo-go/id982107779'; // Apple App Store pour Expo Go
 
-        window.onload = function() {
-            setTimeout(checkAndRedirect, 2000); // Attends 2 secondes avant de rediriger
+    const TRIES_TIMEOUT = 2500; // Temps en millisecondes avant de considérer que l'app n'a pas ouvert
+    const start = Date.now();
+
+    const fallbackTimeout = setTimeout(function() {
+        // Vérifie si suffisamment de temps s'est écoulé (au cas où le timeout se déclenche trop tôt)
+        if (Date.now() - start < TRIES_TIMEOUT + 500) { // Ajoute une petite marge
+             window.location.href = storeUrl;
         }
+    }, TRIES_TIMEOUT);
+
+    window.location.href = appUrl;
+
+    window.addEventListener('blur', function() {
+        clearTimeout(fallbackTimeout);
+    });
+    document.addEventListener('visibilitychange', function handleVisibilityChange() {
+        if (document.hidden) {
+            clearTimeout(fallbackTimeout);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        }
+    });
+
+}
+
+window.onload = function() {
+    setTimeout(checkAndRedirect, 500); // Attends 0.5 seconde avant de lancer la tentative
+}
+
     </script>
     <style>
         body {
