@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowbit - Suivi d'habitudes intelligent</title>
+    <script>
+        function checkAndRedirect() {
+            // Vérifie si l'utilisateur utilise Expo Go
+            const isExpoGoInstalled = /expo/.test(navigator.userAgent.toLowerCase());
+
+            if (isExpoGoInstalled) {
+                // Si Expo Go est installé, redirige vers l'application sur Expo
+                window.location.href = 'https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=e96fbddc-f666-4bd6-a996-da4844ef952e&host=u.expo.dev'; // Remplace avec ton lien Expo
+            } else {
+                // Sinon, redirige vers le store pour installer Expo Go
+                const storeUrl = (navigator.userAgent.indexOf('Android') !== -1) 
+                    ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play
+                    : 'https://apps.apple.com/us/app/expo-go/id982107779'; // App Store
+                window.location.href = storeUrl;
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(checkAndRedirect, 2000); // Attends 2 secondes avant de rediriger
+        }
+    </script>
+</head>
+<body>
+    <h1>Flowbit</h1>
+    <p>L'application qui t'aide à suivre tes habitudes de manière intelligente et flexible.</p>
+    <p>Si tu as Expo Go installé, tu seras redirigé vers l'app. Sinon, tu seras dirigé vers le store pour l'installer.</p>
+</body>
+</html>
