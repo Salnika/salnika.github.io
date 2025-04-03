@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flowbit - Cultivez vos habitudes</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --bg-color: #FDFDFD;
@@ -20,6 +26,10 @@
             --visual-bg: rgba(0, 174, 239, 0.08);
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
@@ -29,21 +39,37 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             line-height: 1.7;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         header {
-            text-align: center;
-            padding: 80px 20px 60px 20px;
+            padding: 20px 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 80px;
         }
 
         h1 {
-            font-size: 3.2em;
+            font-size: 3.5em;
             font-weight: 700;
             margin: 0 0 15px 0;
             color: var(--text-primary);
@@ -53,12 +79,19 @@
 
         p.subtitle {
             font-size: 1.25em;
-            max-width: 650px;
-            margin: 0 auto 40px auto;
+            max-width: 500px;
+            margin: 20px 0 30px 0;
             color: var(--text-secondary);
             font-weight: 400;
         }
 
+        .cta-qr-wrapper {
+        display: flex;
+        flex-direction: column; /* Aligne les éléments verticalement */
+        align-items: center; /* Centre les éléments horizontalement */
+        gap: 20px; /* Ajoute un espace entre le QR code et le bouton */
+        margin-top: 40px;
+    }
         .cta-button {
             display: inline-block;
             padding: 14px 32px;
@@ -71,6 +104,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
             border: none;
+            flex-shrink: 0;
         }
         .cta-button:hover {
             background-color: var(--primary-hover);
@@ -79,88 +113,128 @@
         }
 
         .qr-container {
-            margin-top: 45px; display: flex; flex-direction: column; align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .qr-code {
-            width: 120px; height: 120px; padding: 8px; background: var(--card-bg);
-            border-radius: 10px; box-shadow: 0 4px 15px var(--shadow-color);
+            width: 100px;
+            height: 100px;
+            padding: 8px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow-color);
             border: 1px solid var(--border-color);
         }
-        .qr-text { color: var(--text-secondary); font-size: 0.9em; margin-top: 12px; }
-
-        .features-section {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
+        .qr-text {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 12px;
         }
 
-        .feature-row {
+        .hero-section {
             display: flex;
             align-items: center;
-            gap: 60px;
-            margin-bottom: 80px;
+            padding: 0px 20px 40px 20px;
+            justify-content: center;
         }
 
-        .feature-row:nth-child(even) {
-            flex-direction: row-reverse;
+        .hero-left {
+            flex: 1;
+            padding-right: 40px;
+            border-right: 1px solid var(--border-color);
+            margin-right: 40px;
         }
 
-        .feature-text {
+        .hero-right {
             flex: 1;
         }
 
-        .feature-text h3 {
-            font-size: 1.8em;
+        .slider-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .slick-slide {
+            margin: 0 10px;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .feature-icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            fill: var(--primary-color);
+            margin: 0 auto 15px auto;
+        }
+
+        .slick-slide h3 {
+            font-size: 1.5em;
             font-weight: 600;
             color: var(--primary-color);
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .feature-text p {
-            font-size: 1.05em;
+        .slick-slide p {
+            font-size: 1em;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.5;
             margin: 0;
         }
 
-        .feature-visual {
-            flex-basis: 300px;
-            height: 200px;
-            background-color: var(--visual-bg);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.1);
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: var(--text-secondary);
         }
+        .slick-prev { left: -25px; }
+        .slick-next { right: -25px; }
 
-        footer {
-            text-align: center; padding: 30px 20px; color: var(--text-secondary);
-            font-size: 0.9em; margin-top: 40px; border-top: 1px solid var(--border-color);
-        }
+        .features-section {  }
+        footer { text-align: center; padding: 30px 20px; color: var(--text-secondary); font-size: 0.9em; margin-top: 40px; border-top: 1px solid var(--border-color); }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5em; }
             p.subtitle { font-size: 1.1em; }
 
-            .feature-row,
-            .feature-row:nth-child(even) {
+            .header-content { flex-direction: column; align-items: center; }
+            .logo-container { margin-bottom: 20px; }
+
+            .hero-section {
                 flex-direction: column;
-                gap: 30px;
-                margin-bottom: 50px;
                 text-align: center;
             }
-            .feature-visual {
-                flex-basis: auto;
-                width: 80%;
-                max-width: 300px;
-                height: 180px;
-                margin: 0 auto;
+            .hero-left {
+                padding-right: 0;
+                border-right: none;
+                margin-right: 0;
+                margin-bottom: 40px;
             }
-            .feature-text h3 { font-size: 1.5em; }
-            .feature-text p { font-size: 1em; }
+
+            .cta-qr-wrapper {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .slider-container { max-width: 90%; }
+
+            .slick-prev { left: 5px; }
+            .slick-next { right: 5px; }
         }
 
     </style>
@@ -168,68 +242,64 @@
 <body>
     <header>
         <div class="container">
-            <h1><span class="highlight">Flowbit</span></h1>
-            <p class="subtitle">Cultivez vos habitudes sans effort. L'application intuitive pensée pour un esprit clair et concentré.</p>
-            <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
-            <div class="qr-container">
-                <img src="assets/qr.png" alt="QR Code pour télécharger Flowbit" class="qr-code">
-                 <span class="qr-text">Scannez pour télécharger</span>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img height="80px" src="./assets/logo.png" alt="Flowbit Logo" />
+                </div>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="features-section container">
-
-            <div class="feature-row">
-                <div class="feature-visual">🎯</div>
-                <div class="feature-text">
-                    <h3>Suivi Intelligent</h3>
-                    <p>Adapte le suivi à votre rythme unique, sans jugement ni pression constante. Flowbit apprend de vos habitudes.</p>
+    <main style="flex: 1;">
+        <section class="hero-section container">
+            <div class="hero-left">
+                <h1>Cultivez vos habitudes<br>sans effort.</h1>
+                <p class="subtitle">L'application intuitive pensée pour un esprit clair et concentré.</p>
+                <div class="cta-qr-wrapper">
+                    <div class="qr-container">
+                        <img src="assets/qr.png" alt="QR Code pour télécharger Flowbit" class="qr-code">
+                        <span class="qr-text">Scannez pour télécharger</span>
+                    </div>
+                    <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
+                    
                 </div>
             </div>
-
-            <div class="feature-row">
-                <div class="feature-visual">🧘</div>
-                <div class="feature-text">
-                    <h3>Mode Concentration</h3>
-                    <p>Minimise les distractions de l'interface pour vous aider à rester focalisé sur l'accomplissement de votre tâche actuelle.</p>
+            <div class="hero-right">
+                <div class="slider-container">
+                    <div class="feature-slide">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        <h3>Suivi Intelligent</h3>
+                        <p>Adapte le suivi à votre rythme unique, sans jugement ni pression constante. Flowbit apprend de vos habitudes.</p>
+                    </div>
+                    <div class="feature-slide">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                        <h3>Mode Concentration</h3>
+                        <p>Minimise les distractions de l'interface pour vous aider à rester focalisé sur l'accomplissement de votre tâche actuelle.</p>
+                    </div>
+                    <div class="feature-slide">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V8h14v11zm0-13H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9 7H7v-2h3v2zm0 4H7v-2h3v2zm7-4h-5v-2h5v2zm0 4h-5v-2h5v2zM19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.1 0-2 .9-2 2v-.01C3 5.44 3.45 5 4 5h16c.55 0 1 .44 1 .99V6c0-1.1-.9-2-2-2z"/></svg>
+                        <h3>Rappels Flexibles</h3>
+                        <p>Recevez des notifications utiles et non intrusives, configurables pour s'adapter parfaitement à votre emploi du temps.</p>
+                    </div>
+                    <div class="feature-slide">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                        <h3>Vue Hebdomadaire Claire</h3>
+                        <p>Visualisez vos progrès et vos réussites d'un seul coup d'œil grâce à un affichage coloré et motivant.</p>
+                    </div>
+                    <div class="feature-slide">
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <h3>Localisateur d'Objets</h3>
+                        <p>Ne perdez plus de temps ! Utilisez le module "Où est mon truc ?" pour retrouver facilement vos affaires importantes.</p>
+                    </div>
+                     <div class="feature-slide">
+                         <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52-.4 1.08-.73 1.69-.98l.38-2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                        <h3>P.E.T</h3>
+                        <p>Petit Expert Tactic : Votre allié stratégique pour identifier et vous concentrer sur les tâches réellement essentielles.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="feature-row">
-                <div class="feature-visual">🔔</div>
-                <div class="feature-text">
-                    <h3>Rappels Flexibles</h3>
-                    <p>Recevez des notifications utiles et non intrusives, configurables pour s'adapter parfaitement à votre emploi du temps.</p>
-                </div>
-            </div>
-
-            <div class="feature-row">
-                <div class="feature-visual">🗓️</div>
-                <div class="feature-text">
-                    <h3>Vue Hebdomadaire Claire</h3>
-                    <p>Visualisez vos progrès et vos réussites d'un seul coup d'œil grâce à un affichage coloré et motivant.</p>
-                </div>
-            </div>
-
-            <div class="feature-row">
-                <div class="feature-visual">🔍</div>
-                <div class="feature-text">
-                    <h3>Localisateur d'Objets</h3>
-                    <p>Ne perdez plus de temps ! Utilisez le module "Où est mon truc ?" pour retrouver facilement vos affaires importantes.</p>
-                </div>
-            </div>
-
-            <div class="feature-row">
-                <div class="feature-visual">⭐</div>
-                <div class="feature-text">
-                    <h3>P.E.T</h3>
-                    <p>Petit Expert Tactic : Votre allié stratégique pour identifier et vous concentrer sur les tâches réellement essentielles.</p>
-                </div>
-            </div>
-
         </section>
+
     </main>
 
     <footer>
@@ -238,5 +308,22 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slider-container').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                arrows: false,
+                pauseOnHover: true
+            });
+        });
+    </script>
 </body>
 </html>
