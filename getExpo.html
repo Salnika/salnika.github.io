@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flowbit - Preview Update</title>
-    <!-- Inclure Tailwind CSS via CDN pour le test -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Styles de base */
         body {
-            font-family: 'Inter', sans-serif; /* Assurez-vous d'importer cette police */
+            font-family: 'Inter', sans-serif; 
             background: #121212;
             color: white;
             display: flex;
@@ -18,7 +16,6 @@
             min-height: 100vh;
             padding: 20px;
         }
-        /* Couleurs de base si non définies par Tailwind (Adaptez selon votre config) */
         .text-default { color: #e0e0e0; }
         .text-secondary { color: #aaaaaa; }
         .bg-default { background-color: #1e1e1e; }
@@ -27,19 +24,6 @@
         .heading-lg { font-size: 1.125rem; line-height: 1.75rem; }
         .icon-md { width: 1.5rem; height: 1.5rem; }
 
-        /* Styles additionnels pour les boutons si besoin (Tailwind devrait suffire) */
-        /* .action-button {
-            display: block; /* Pour prendre toute la largeur */
-           /* padding: 10px 15px;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 500;
-            margin-bottom: 10px; /* Espace entre les boutons */
-       /* }
-        .action-button:last-child {
-            margin-bottom: 0;
-        } */
     </style>
     <script>
         const APP_URL = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/0910730a-f3df-4d71-ad7f-83c9f6e2d0ae'; // Lien Expo
@@ -52,26 +36,19 @@
         }
 
         function tryOpenApp() {
-            // Tente d'ouvrir l'application via l'URL personnalisée
             window.location.href = APP_URL;
         }
 
         function redirectToStore() {
-            // Redirige vers le store approprié
             window.location.href = getStoreUrl();
         }
 
-        // La redirection automatique est toujours commentée pour éviter les conflits avec le scan QR
-        // window.onload = function() {
-        //     setTimeout(checkAndRedirectAutomatically, 1000);
-        // }
-        // function checkAndRedirectAutomatically() { ... } // Fonction conservée si besoin mais non appelée au chargement
+
     </script>
 </head>
 <body>
 
     <div class="rounded-md border border-secondary bg-default shadow-xs min-w-[320px] sm:min-w-[500px] w-full max-w-lg">
-        <!-- Header -->
         <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4">
             <div class="flex items-center justify-between gap-y-3 max-md-gutters:flex-col max-md-gutters:items-start">
                 <div class="grid overflow-hidden">
@@ -84,7 +61,6 @@
                 </div>
             </div>
         </div>
-        <!-- Infos -->
         <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4"  style="position: relative;">
             <p class="text-default font-medium break-words">Flowbit App Preview</p>
             <div class="flex justify-between gap-6 mt-2">
@@ -95,7 +71,6 @@
                 <p class="text-secondary text-sm">Published: Apr 03, 2025 11:03 AM UTC</p>
             </div>
         </div>
-        <!-- QR Code Section -->
         <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
             <p class="text-default">Scannez le QR code avec l'appareil où Expo Go est installé :</p>
             <div class="relative flex items-center justify-center">
@@ -103,19 +78,15 @@
                 <img src="./assets/icon.png" width="40px" style="position: absolute;">
             </div>
         </div>
-        <!-- Actions Section (avec deux boutons) -->
         <div class="px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
             <p class="text-default text-sm mb-1">Ou utilisez ces options :</p>
-            <!-- Bouton pour ouvrir dans Expo Go -->
             <button onclick="tryOpenApp()" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
                 Ouvrir dans Expo Go
             </button>
-            <!-- Bouton pour installer Expo Go -->
             <button onclick="redirectToStore()" class="w-full text-center bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
                 Installer Expo Go (Store)
             </button>
         </div>
-        <!-- Section Advanced supprimée -->
     </div>
 
 </body>

@@ -41,22 +41,26 @@
             line-height: 1.7;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         header {
-            padding: 20px 20px;
+            padding: 20px 0;
         }
 
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -65,20 +69,22 @@
         }
 
         .logo-container img {
-            height: 80px;
+            height: 100px;
+            width: auto;
         }
 
         h1 {
-            font-size: 3.5em;
+            font-size: 3.0em;
             font-weight: 700;
             margin: 0 0 15px 0;
             color: var(--text-primary);
             letter-spacing: -1px;
+            line-height: 1.2;
         }
         h1 .highlight { color: var(--primary-color); }
 
         p.subtitle {
-            font-size: 1.25em;
+            font-size: 1.15em;
             max-width: 500px;
             margin: 20px 0 30px 0;
             color: var(--text-secondary);
@@ -86,12 +92,14 @@
         }
 
         .cta-qr-wrapper {
-        display: flex;
-        flex-direction: column; /* Aligne les éléments verticalement */
-        align-items: center; /* Centre les éléments horizontalement */
-        gap: 20px; /* Ajoute un espace entre le QR code et le bouton */
-        margin-top: 40px;
-    }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 14px 32px;
@@ -105,6 +113,8 @@
             box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
             border: none;
             flex-shrink: 0;
+            text-align: center;
+            cursor: pointer;
         }
         .cta-button:hover {
             background-color: var(--primary-hover);
@@ -125,33 +135,41 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px var(--shadow-color);
             border: 1px solid var(--border-color);
+            display: block;
         }
         .qr-text {
             color: var(--text-secondary);
             font-size: 0.9em;
             margin-top: 12px;
+            text-align: center;
         }
 
         .hero-section {
             display: flex;
             align-items: center;
-            padding: 0px 20px 40px 20px;
+            padding: 0 0 40px 0;
             justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
         .hero-left {
-            flex: 1;
-            padding-right: 40px;
-            border-right: 1px solid var(--border-color);
-            margin-right: 40px;
+            flex: 1 1 500px;
+            min-width: 300px;
         }
 
         .hero-right {
-            flex: 1;
+            flex: 1 1 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+            width: 100%;
         }
 
         .slider-container {
             max-width: 500px;
+            width: 100%;
             margin: 0 auto;
         }
 
@@ -163,6 +181,10 @@
             box-shadow: 0 4px 15px var(--shadow-color);
             border: 1px solid var(--border-color);
             text-align: center;
+            min-height: 220px;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .feature-icon {
@@ -174,7 +196,7 @@
         }
 
         .slick-slide h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: 600;
             color: var(--primary-color);
             margin-top: 0;
@@ -182,60 +204,116 @@
         }
 
         .slick-slide p {
-            font-size: 1em;
+            font-size: 0.95em;
             color: var(--text-secondary);
             line-height: 1.5;
             margin: 0;
         }
 
-        .slick-prev,
-        .slick-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.2em;
-            color: var(--text-secondary);
+        .slick-dots {
+            bottom: -30px;
         }
-        .slick-prev { left: -25px; }
-        .slick-next { right: -25px; }
+        .slick-dots li button:before {
+            font-size: 10px;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+        .slick-dots li.slick-active button:before {
+            color: var(--primary-color);
+            opacity: 1;
+        }
 
-        .features-section {  }
-        footer { text-align: center; padding: 30px 20px; color: var(--text-secondary); font-size: 0.9em; margin-top: 40px; border-top: 1px solid var(--border-color); }
+        .slick-prev,
+        .slick-next { display: none !important; }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            p.subtitle { font-size: 1.1em; }
+        .features-section { }
 
-            .header-content { flex-direction: column; align-items: center; }
-            .logo-container { margin-bottom: 20px; }
+        footer {
+             text-align: center;
+             padding: 30px 20px;
+             color: var(--text-secondary);
+             font-size: 0.9em;
+             margin-top: 60px;
+             border-top: 1px solid var(--border-color);
+        }
 
+        @media (max-width: 992px) {
             .hero-section {
                 flex-direction: column;
                 text-align: center;
+                gap: 50px;
             }
             .hero-left {
                 padding-right: 0;
                 border-right: none;
                 margin-right: 0;
-                margin-bottom: 40px;
+                text-align: center;
+                order: 1;
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+            }
+             p.subtitle {
+                 margin-left: auto;
+                 margin-right: auto;
             }
 
-            .cta-qr-wrapper {
-                justify-content: center;
-                flex-wrap: wrap;
+            .hero-right {
+                 order: 2;
+                 width: 100%;
+                 max-width: 550px;
+            }
+            .slider-container {
+                 max-width: 100%;
             }
 
-            .slider-container { max-width: 90%; }
-
-            .slick-prev { left: 5px; }
-            .slick-next { right: 5px; }
+             .cta-qr-wrapper {
+                 justify-content: center;
+            }
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                 font-size: 2.4em;
+                 margin-bottom: 10px;
+            }
+            p.subtitle {
+                 font-size: 1.05em;
+                 margin-bottom: 25px;
+            }
+
+            .header-content {
+                 flex-direction: column;
+                 align-items: center;
+                 gap: 15px;
+            }
+            .logo-container {
+                margin-bottom: 0;
+            }
+            .logo-container img {
+                height: 80px;
+            }
+
+            .hero-section {
+                padding-top: 20px;
+                gap: 40px;
+            }
+
+             .slick-slide {
+                 min-height: 200px;
+             }
+             .slick-slide h3 { font-size: 1.3em; }
+             .slick-slide p { font-size: 0.9em; }
+        }
+
+         @media (max-width: 480px) {
+              h1 { font-size: 2.0em; }
+              p.subtitle { font-size: 1em; }
+              .container { padding: 0 15px; }
+              .cta-button { padding: 12px 28px; font-size: 1em; width: 90%; max-width: 300px;}
+              .qr-code { width: 90px; height: 90px;}
+              .slick-slide { padding: 20px 15px; min-height: 180px; }
+         }
 
     </style>
 </head>
@@ -244,7 +322,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img height="80px" src="./assets/logo.png" alt="Flowbit Logo" />
+                     <img src="./assets/logo.png" alt="Flowbit Logo" />
                 </div>
             </div>
         </div>
@@ -253,15 +331,14 @@
     <main style="flex: 1;">
         <section class="hero-section container">
             <div class="hero-left">
-                <h1>Cultivez vos habitudes<br>sans effort.</h1>
+                <h1>Cultivez vos habitudes<br>sans effort<span class="highlight">.</span></h1>
                 <p class="subtitle">L'application intuitive pensée pour un esprit clair et concentré.</p>
                 <div class="cta-qr-wrapper">
+                     <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
                     <div class="qr-container">
                         <img src="assets/qr.png" alt="QR Code pour télécharger Flowbit" class="qr-code">
                         <span class="qr-text">Scannez pour télécharger</span>
                     </div>
-                    <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
-                    
                 </div>
             </div>
             <div class="hero-right">
@@ -299,7 +376,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer>
@@ -321,7 +397,8 @@
                 autoplay: true,
                 autoplaySpeed: 4000,
                 arrows: false,
-                pauseOnHover: true
+                pauseOnHover: true,
+                adaptiveHeight: false
             });
         });
     </script>
