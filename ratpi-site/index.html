@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Ajout des animations CSS */
         .glitch-effect {
             animation: glitch 0.3s linear;
         }
@@ -77,30 +76,24 @@
             'assets/3.gif',
             'assets/4.gif',
             'assets/5.gif'
-            // Ajoute ici tous les noms de fichiers que tu as dans ton dossier assets
         ]; 
 
         let currentIndex = 0;
         const logo = document.getElementById('random-logo');
 
         function changeImage() {
-            // Ajout des effets
             logo.classList.add('glitch-effect', 'shake-effect');
             
-            // Changement de l'image
             logo.src = images[currentIndex];
             currentIndex = (currentIndex + 1) % images.length;
 
-            // Suppression des effets après l'animation (300ms = durée de l'animation)
             setTimeout(() => {
                 logo.classList.remove('glitch-effect', 'shake-effect');
             }, 300);
         }
 
-        // Charge la première image immédiatement
         changeImage();
 
-        // Change l'image toutes les 5 secondes
         setInterval(changeImage, 5000);
     </script>
 </body>
