@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #7f7f7f;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        #container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            border: 1px dashed #444;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        #symbol {
+            font-size: 3em;
+            color: #5a5a5a;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+
+        p .highlight {
+            color: #999;
+            font-weight: bold;
+        }
+
+        #interaction {
+            margin-top: 40px;
+        }
+
+        input[type="text"] {
+            background-color: #222;
+            border: 1px solid #444;
+            color: #888;
+            padding: 10px;
+            font-family: inherit;
+            width: 200px;
+            text-align: center;
+            outline: none;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid #555;
+            color: #777;
+            padding: 10px 20px;
+            font-family: inherit;
+            cursor: help;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            border-color: #888;
+            color: #999;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #response {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #4a4a4a;
+            display: none;
+            font-style: italic;
+            transition: opacity 1s ease-in;
+            opacity: 0;
+        }
+
+        #cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #666;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* <!-- Le Signal est intermittent. Protocole 7 activé. Ne faites confiance qu'au silence. --> */
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="symbol">∴</div>
+
+        <p>
+            La <span class="highlight">résonance</span> s'intensifie par moments. Ignorez les échos.
+            Ce qui est cherché n'est pas perdu, simplement <span class="highlight">désaligné</span>.
+            Attendez le prochain <span class="highlight">intervalle</span>. Ne forcez pas la porte.
+            Elle ne s'ouvre que de l'intérieur.
+        </p>
+
+        <div id="interaction">
+            <input type="text" id="input-code" placeholder="Fréquence...?">
+            <button id="submit-btn">Tenter</button>
+        </div>
+
+        <div id="response">
+            (Le silence s'approfondit. Quelque chose a changé... ou peut-être pas.)
+        </div>
+
+        <div style="margin-top: 50px; font-size: 0.8em; color: #555;">
+            ...transmission en attente<span id="cursor"></span>
+        </div>
+
+    </div>
+
+    <script>
+        const button = document.getElementById('submit-btn');
+        const input = document.getElementById('input-code');
+        const response = document.getElementById('response');
+
+        button.addEventListener('click', () => {
+            response.style.display = 'block';
+            void response.offsetWidth;
+            response.style.opacity = '1';
+        });
+
+        input.addEventListener('focus', () => {
+            if (Math.random() > 0.7) {
+                const placeholders = ["Écho ?", "Clé ?", "...", "Signal ?", "Silence..."];
+                input.placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+            }
+        });
+        input.addEventListener('blur', () => {
+            input.placeholder = "Fréquence...?";
+        });
+
+        console.log("%c ███████╗██╗   ██╗███████╗ ██████╗ \n ██╔════╝██║   ██║██╔════╝██╔════╝ \n ███████╗██║   ██║███████╗██║  ███╗\n ╚════██║██║   ██║╚════██║██║   ██║\n ███████║╚██████╔╝███████║╚██████╔╝\n ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ ", "color:#444;");
+        console.log("%cIls écoutent aussi ici.", "color:#7f7f7f; font-style:italic;");
+
+    </script>
+
+     <!-- La Séquence est : Prime -> Ombre -> Réveil. Mais quand ? -->
+
+</body>
+</html>
