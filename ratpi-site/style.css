@@ -1,0 +1,387 @@
+/* style.css */
+
+/* --- Variables de Couleurs et Polices --- */
+:root {
+    --bg-color: #1a1a1a; /* Fond sombre */
+    --text-color: #e0e0e0; /* Texte principal clair */
+    --glitch-color1: #00ffff; /* Cyan */
+    --glitch-color2: #ff00ff; /* Magenta */
+    --accent-color: #f0f0f0; /* Blanc cassé pour accents */
+}
+
+/* --- Styles Globaux --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Empêche le scroll horizontal dû au glitch */
+}
+
+.container {
+    max-width: 800px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: var(--accent-color);
+    margin: 0 0 10px 0;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    position: relative; /* Nécessaire pour le glitch text */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px; /* Augmenté pour plus d'espace */
+    border-bottom: 2px solid var(--glitch-color1);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+p {
+    margin: 0 auto 15px auto; /* Centrer les paragraphes par défaut */
+    max-width: 600px; /* Limiter largeur pour lisibilité */
+}
+
+strong {
+    color: var(--glitch-color1);
+    font-weight: bold; /* Assurer la graisse */
+}
+
+em {
+    color: var(--glitch-color2);
+    font-style: normal; /* Ou 'italic' */
+}
+
+/* Style commun pour les liens email */
+.email-link {
+    color: var(--glitch-color1);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.email-link:hover {
+    color: var(--glitch-color2);
+    text-shadow: 0 0 5px var(--glitch-color1);
+}
+
+/* --- Header --- */
+header {
+    margin-bottom: 50px; /* Augmenté */
+}
+
+.logo-container {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: block;
+    width: 150px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Section Générale --- */
+section {
+    margin-bottom: 60px; /* Espace entre les sections */
+}
+
+/* --- Glitch Effect Base (Logo & Titre H1) --- */
+
+.glitch-text, .glitch-container {
+    position: relative;
+}
+
+/* Pseudo-éléments pour l'effet de décalage coloré */
+.glitch-text::before,
+.glitch-text::after,
+.glitch-container::before,
+.glitch-container::after {
+    content: attr(data-text); /* Pour le texte H1 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    overflow: hidden;
+    clip-path: inset(50% 0 50% 0);
+}
+
+/* Spécifique pour l'image : pas de content, juste un fond coloré */
+.glitch-container::before,
+.glitch-container::after {
+    content: '';
+    background-color: transparent;
+    z-index: 0;
+    mix-blend-mode: screen; /* Ou 'multiply', 'lighten'... */
+    opacity: 0.7; /* Légère transparence */
+}
+
+
+.glitch-text::before { /* Couche Cyan H1 */
+    left: 2px;
+    text-shadow: -1px 0 var(--glitch-color1);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after { /* Couche Magenta H1 */
+    left: -2px;
+    text-shadow: -1px 0 var(--glitch-color2);
+    animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+
+.glitch-container::before { /* Couche Cyan Logo */
+    left: 3px;
+    background-color: var(--glitch-color1);
+    animation: glitch-anim-1 1.5s infinite linear alternate-reverse;
+}
+
+.glitch-container::after { /* Couche Magenta Logo */
+    left: -3px;
+    background-color: var(--glitch-color2);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+/* Animation Glitch Principale (décalage et découpage) */
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(30% 0 60% 0); transform: translateX(-3px); opacity: 0.7;}
+    20% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); opacity: 0.5;}
+    40% { clip-path: inset(15% 0 70% 0); transform: translateX(-1px); opacity: 0.8;}
+    60% { clip-path: inset(65% 0 20% 0); transform: translateX(3px); opacity: 0.4;}
+    80% { clip-path: inset(40% 0 45% 0); transform: translateX(-2px); opacity: 0.7;}
+    100% { clip-path: inset(90% 0 2% 0); transform: translateX(1px); opacity: 0.6;}
+}
+
+@keyframes glitch-anim-2 {
+     0% { clip-path: inset(75% 0 10% 0); transform: translateX(2px); opacity: 0.7;}
+    20% { clip-path: inset(10% 0 85% 0); transform: translateX(-3px); opacity: 0.5;}
+    40% { clip-path: inset(55% 0 30% 0); transform: translateX(1px); opacity: 0.8;}
+    60% { clip-path: inset(20% 0 70% 0); transform: translateX(-2px); opacity: 0.4;}
+    80% { clip-path: inset(50% 0 35% 0); transform: translateX(3px); opacity: 0.7;}
+    100% { clip-path: inset(5% 0 90% 0); transform: translateX(-1px); opacity: 0.6;}
+}
+
+/* Classe ajoutée par JS pour intensifier le glitch principal */
+.glitching::before, .glitching::after {
+     animation-duration: 0.3s; /* Accélère l'animation */
+     opacity: 1;
+}
+.glitching.glitch-container::before,
+.glitching.glitch-container::after {
+     opacity: 0.9; /* Rend les couches logo plus opaques */
+}
+
+
+/* --- Section Mission --- */
+#mission p {
+    font-size: 1.1em;
+}
+
+
+/* --- Section Collaboration --- */
+#collaboration p {
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+
+/* --- Section Soutenir (Dons) & Styles Boutons --- */
+#support p {
+    max-width: 550px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 2px solid var(--glitch-color1); /* Bordure par défaut */
+    color: var(--accent-color);
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative; /* Important pour les pseudo-éléments et l'animation */
+    overflow: hidden; /* Cache ce qui dépasse (pour certains effets) */
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.btn-donate {
+    border-color: var(--glitch-color2); /* Bordure spécifique pour le bouton don */
+}
+
+/* --- Effet Glitch pour Boutons --- */
+
+/* 1. Léger tremblement constant */
+@keyframes glitch-button-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, -1px); }
+  20% { transform: translate(1px, 1px); }
+  30% { transform: translate(1px, -1px); }
+  40% { transform: translate(-1px, 1px); }
+  50% { transform: translate(-2px, 0); }
+  60% { transform: translate(2px, 0); }
+  70% { transform: translate(0, -2px); }
+  80% { transform: translate(0, 2px); }
+  90% { transform: translate(-1px, -1px); }
+}
+
+/* Applique l'animation de tremblement aux boutons désignés */
+.btn.glitch-hover {
+    animation: glitch-button-jitter 0.5s infinite linear;
+}
+
+
+/* 2. Effet Glitch INTENSE au survol sur le TEXTE du bouton */
+.glitch-hover span { /* Le texte visible */
+    display: inline-block;
+    position: relative;
+    z-index: 2; /* Au-dessus des pseudo-éléments */
+}
+
+.glitch-hover::before,
+.glitch-hover::after {
+    content: attr(data-text); /* Copie le texte du span via l'attribut */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color); /* Masque le texte original en dessous */
+    color: var(--accent-color); /* Couleur du texte glitché */
+    padding: 12px 0; /* Doit correspondre au padding vertical du bouton */
+    display: block;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0); /* Commence totalement caché */
+    transition: clip-path 0.15s cubic-bezier(.44,-0.81,.57,1.65), transform 0.1s ease-out; /* Transition plus nerveuse */
+    z-index: 1; /* Derrière le span, devant le fond du bouton */
+}
+
+/* Ajustement pour le survol - effet plus aggressif */
+.glitch-hover:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 65%); /* Coupe plus franche */
+    transform: translate(-5px, -3px) skewX(-10deg); /* Décalage et inclinaison */
+    text-shadow: 2px 0 var(--glitch-color1), -1px 1px var(--glitch-color1); /* Ombre plus marquée */
+    animation: glitch-text-hover-1 0.3s infinite alternate; /* Petite animation au survol */
+}
+
+.glitch-hover:hover::after {
+    clip-path: polygon(0 100%, 100% 100%, 100% 60%, 0 35%); /* Coupe plus franche (bas) */
+    transform: translate(5px, 3px) skewX(10deg); /* Décalage et inclinaison opposés */
+    text-shadow: -2px 0 var(--glitch-color2), 1px -1px var(--glitch-color2); /* Ombre plus marquée */
+     animation: glitch-text-hover-2 0.35s infinite alternate; /* Petite animation au survol */
+}
+
+/* Mini-animations pour les textes glitchés au survol */
+@keyframes glitch-text-hover-1 {
+    from { transform: translate(-5px, -3px) skewX(-10deg); }
+    to { transform: translate(-4px, -2px) skewX(-8deg); }
+}
+@keyframes glitch-text-hover-2 {
+     from { transform: translate(5px, 3px) skewX(10deg); }
+    to { transform: translate(4px, 2px) skewX(8deg); }
+}
+
+
+/* Style de survol général du bouton (fond, bordure) */
+.btn:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    /* On arrête l'animation de jitter au survol pour ne pas surcharger */
+    animation: none;
+}
+
+
+/* --- Section Équipe --- */
+#team {
+    /* Pas de styles spécifiques pour la section elle-même pour l'instant */
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.team-member {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1), 0 3px 8px rgba(255, 0, 255, 0.1);
+}
+
+.member-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--glitch-color1);
+    margin-bottom: 15px;
+    object-fit: cover;
+    transition: border-color 0.3s ease;
+}
+
+.team-member:hover .member-avatar {
+    border-color: var(--glitch-color2);
+}
+
+.team-member h3 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.team-member .role {
+    font-size: 0.9em;
+    color: var(--glitch-color1);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.team-member .bio {
+    font-size: 0.85em;
+    color: var(--text-color);
+    font-style: italic;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #888;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+footer p {
+    margin-bottom: 10px;
+    max-width: none; /* Permettre au footer d'utiliser toute la largeur du container */
+}

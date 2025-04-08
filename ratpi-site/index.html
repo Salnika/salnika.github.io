@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RATPI Studio - Glitch Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ajout des animations CSS */
+        .glitch-effect {
+            animation: glitch 0.3s linear;
+        }
+
+        .shake-effect {
+            animation: shake 0.3s linear;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+            75% { transform: rotate(-1deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container glitch-container">
+                 <img id="random-logo" src="" alt="Logo RATPI Studio" class="logo">
+             </div>
+            <h1 class="glitch-text" data-text="RATPI Studio">RATPI Studio</h1>
+        </header>
+
+        <main>
+            <section id="mission">
+                <h2>Nos Missions_</h2>
+                <p>
+                    Développer des jeux vidéo et des applications interactives pour
+                    <strong>sensibiliser</strong>, <strong>soutenir</strong> et
+                    <strong>accompagner</strong> dans le domaine de la santé mentale.
+                    On rend ça accessible, <em>ludique</em> et <em>inclusif</em> pour tout le monde !
+                </p>
+              
+              <p>
+                    Editer des jeux vidéo et des applications interactives pour donner de la
+                    <strong>visibilitée</strong>, <strong>soutenir</strong> et
+                    <strong>accompagner</strong> les developeurs. On <em>partage</em> notre passion.
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 RATPI Studio // Ready to play?</p>
+            <p><a href="mailto:contact@ratpi-studio.fr" class="email-link">contact@ratpi-studio.fr</a></p>
+        </footer>
+    </div>
+
+    <script>
+         const images = [
+            'assets/1.png',
+            'assets/2.gif',
+            'assets/3.gif',
+            'assets/4.gif',
+            'assets/5.gif'
+            // Ajoute ici tous les noms de fichiers que tu as dans ton dossier assets
+        ]; 
+
+        let currentIndex = 0;
+        const logo = document.getElementById('random-logo');
+
+        function changeImage() {
+            // Ajout des effets
+            logo.classList.add('glitch-effect', 'shake-effect');
+            
+            // Changement de l'image
+            logo.src = images[currentIndex];
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Suppression des effets après l'animation (300ms = durée de l'animation)
+            setTimeout(() => {
+                logo.classList.remove('glitch-effect', 'shake-effect');
+            }, 300);
+        }
+
+        // Charge la première image immédiatement
+        changeImage();
+
+        // Change l'image toutes les 5 secondes
+        setInterval(changeImage, 5000);
+    </script>
+</body>
+</html>
