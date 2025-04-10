@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.flowbit.ratpi-studio.fr/sitemap.xml
