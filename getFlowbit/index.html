@@ -1,420 +1,179 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Flowbit : L'application pensée pour le TDAH. Organisez vos tâches, suivez vos habitudes et développez votre concentration facilement.">
+    <meta name="description" content="Flowbit : L'application pensée pour le TDAH. Organisez vos tâches, suivez vos habitudes et développez votre concentration facilement." data-en="Flowbit: The app designed for ADHD. Organize tasks, track habits, and boost focus effortlessly.">
     <meta name="keywords" content="application TDAH, productivité TDAH, habitudes TDAH, gestion des tâches, Flowbit app">
     <meta name="author" content="Flowbit">
-    <meta property="og:title" content="Flowbit - Application pour Cultiver Vos Habitudes">
-    <meta property="og:description" content="L'application intuitive pour un esprit clair et organisé. Conçue pour le TDAH.">
+    <meta property="og:title" content="Flowbit - Application pour Cultiver Vos Habitudes" data-en="Flowbit - Grow Your Habits">
+    <meta property="og:description" content="L'application intuitive pour un esprit clair et organisé. Conçue pour le TDAH." data-en="The intuitive app for a clear and organized mind. Designed for ADHD.">
     <meta property="og:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
     <meta property="og:url" content="http://www.flowbit.ratpi-studio.fr/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Flowbit - Application pour Cultiver Vos Habitudes">
-    <meta name="twitter:description" content="L'application intuitive pensée pour un esprit clair et concentré, dédiée au TDAH.">
+    <meta name="twitter:title" content="Flowbit - Application pour Cultiver Vos Habitudes" data-en="Flowbit - Grow Your Habits">
+    <meta name="twitter:description" content="L'application intuitive pensée pour un esprit clair et concentré, dédiée au TDAH." data-en="The intuitive app designed for a clear and focused mind, dedicated to ADHD.">
     <meta name="twitter:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
-    <meta name="google-site-verification" content="0KpBGF4ACCbsLhz1rX8POy3SYfsGvEh8y0ZzuK3bu3U" />
-    <link rel="canonical" href="http://www.flowbit.ratpi-studio.fr/">
+    <meta name="google-site-verification" content="0KpBGF4ACCbsLhz1rX8POy3SYfsGvEh8y0ZzuK3bu3U">
+    <link rel="canonical" href="https://www.flowbit.ratpi-studio.fr/">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon_io/site.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        :root {
-            --bg-color: #FDFDFD;
-            --card-bg: #FFFFFF;
-            --primary-color: #00AEEF;
-            --primary-hover: #0095c7;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --border-color: #E0E0E0;
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --visual-bg: rgba(0, 174, 239, 0.08);
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
-
-        html, body {
-            height: 100%;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        body {
+        #lang-toggle {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 50;
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 6px;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.7;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        header {
-            padding: 20px 0;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 100px;
-            width: auto;
-        }
-
-        h1 {
-            font-size: 3.0em;
-            font-weight: 700;
-            margin: 0 0 15px 0;
-            color: var(--text-primary);
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-        h1 .highlight { color: var(--primary-color); }
-
-        p.subtitle {
-            font-size: 1.15em;
-            max-width: 500px;
-            margin: 20px 0 30px 0;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .cta-qr-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            margin-top: 40px;
-            width: 100%;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 14px 32px;
-            font-size: 1.05em;
             font-weight: 600;
-            color: white;
-            background-color: var(--primary-color);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
-            border: none;
-            flex-shrink: 0;
-            text-align: center;
             cursor: pointer;
         }
-        .cta-button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 174, 239, 0.3);
-        }
-
-        .qr-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .qr-code {
-            width: 100px;
-            height: 100px;
-            padding: 8px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            border: 1px solid var(--border-color);
-            display: block;
-        }
-        .qr-text {
-            color: var(--text-secondary);
-            font-size: 0.9em;
-            margin-top: 12px;
-            text-align: center;
-        }
-
-        .hero-section {
-            display: flex;
-            align-items: center;
-            padding: 0 0 40px 0;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero-left {
-            flex: 1 1 500px;
-            min-width: 300px;
-        }
-
-        .hero-right {
-            flex: 1 1 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 300px;
-            width: 100%;
-        }
-
-        .slider-container {
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .slick-slide {
-            margin: 0 10px;
-            padding: 30px 20px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            min-height: 220px;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .feature-icon {
-            display: block;
-            width: 40px;
-            height: 40px;
-            fill: var(--primary-color);
-            margin: 0 auto 15px auto;
-        }
-
-        .slick-slide h3 {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .slick-slide p {
-            font-size: 0.95em;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .slick-dots {
-            bottom: -30px;
-        }
-        .slick-dots li button:before {
-            font-size: 10px;
-            color: var(--primary-color);
-            opacity: 0.5;
-        }
-        .slick-dots li.slick-active button:before {
-            color: var(--primary-color);
-            opacity: 1;
-        }
-
-        .slick-prev,
-        .slick-next { display: none !important; }
-
-        .features-section { }
-
-        footer {
-             text-align: center;
-             padding: 30px 20px;
-             color: var(--text-secondary);
-             font-size: 0.9em;
-             margin-top: 60px;
-             border-top: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 992px) {
-            .hero-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 50px;
-            }
-            .hero-left {
-                padding-right: 0;
-                border-right: none;
-                margin-right: 0;
-                text-align: center;
-                order: 1;
-                 display: flex;
-                 flex-direction: column;
-                 align-items: center;
-            }
-             p.subtitle {
-                 margin-left: auto;
-                 margin-right: auto;
-            }
-
-            .hero-right {
-                 order: 2;
-                 width: 100%;
-                 max-width: 550px;
-            }
-            .slider-container {
-                 max-width: 100%;
-            }
-
-             .cta-qr-wrapper {
-                 justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                 font-size: 2.4em;
-                 margin-bottom: 10px;
-            }
-            p.subtitle {
-                 font-size: 1.05em;
-                 margin-bottom: 25px;
-            }
-
-            .header-content {
-                 flex-direction: column;
-                 align-items: center;
-                 gap: 15px;
-            }
-            .logo-container {
-                margin-bottom: 0;
-            }
-            .logo-container img {
-                height: 80px;
-            }
-
-            .hero-section {
-                padding-top: 20px;
-                gap: 40px;
-            }
-
-             .slick-slide {
-                 min-height: 200px;
-             }
-             .slick-slide h3 { font-size: 1.3em; }
-             .slick-slide p { font-size: 0.9em; }
-        }
-
-         @media (max-width: 480px) {
-              h1 { font-size: 2.0em; }
-              p.subtitle { font-size: 1em; }
-              .container { padding: 0 15px; }
-              .cta-button { padding: 12px 28px; font-size: 1em; width: 90%; max-width: 300px;}
-              .qr-code { width: 90px; height: 90px;}
-              .slick-slide { padding: 20px 15px; min-height: 180px; }
-         }
-
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                     <img src="./assets/logo.png" alt="Flowbit Logo" />
-                </div>
-            </div>
+<body class="bg-[#0d0d0d] text-gray-200">
+
+<button id="lang-toggle">FR | EN</button>
+
+<main class="relative overflow-hidden container max-w-7xl mx-auto px-6 lg:px-8">
+    <header class="relative z-20 flex items-center justify-between py-6 fade-in">
+        <div class="flex items-center gap-4">
+            <img src="images/logo.png" alt="Flowbit Logo" class="h-12 w-12 rounded-full">
+            <span class="text-2xl font-bold text-gray-100" data-en="Flowbit">Flowbit</span>
         </div>
+        <a href="whyexpo.html" class="text-sm text-gray-400 hover:text-white border border-gray-600 rounded px-3 py-1 transition" data-en="Why Expo?">Pourquoi Expo&nbsp;?</a>
     </header>
 
-    <main style="flex: 1;">
-        <section class="hero-section container">
-            <div class="hero-left">
-                <h1>Cultivez vos habitudes<br>sans effort<span class="highlight">.</span></h1>
-                <p class="subtitle">L'application intuitive pensée pour un esprit clair et concentré.</p>
-                <div class="cta-qr-wrapper">
-                     <a href="getExpo.html" class="cta-button">Télécharger l'App</a>
-                    <div class="qr-container">
-                        <img src="assets/qr.png" alt="QR Code pour télécharger Flowbit" class="qr-code">
-                        <span class="qr-text">Scannez pour télécharger</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="slider-container">
-                    <div class="feature-slide">
-                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                        <h3>Suivi Intelligent</h3>
-                        <p>Adapte le suivi à votre rythme unique, sans jugement ni pression constante. Flowbit apprend de vos habitudes.</p>
-                    </div>
-                    <div class="feature-slide">
-                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        <h3>Mode Concentration</h3>
-                        <p>Minimise les distractions de l'interface pour vous aider à rester focalisé sur l'accomplissement de votre tâche actuelle.</p>
-                    </div>
-                    <div class="feature-slide">
-                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V8h14v11zm0-13H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9 7H7v-2h3v2zm0 4H7v-2h3v2zm7-4h-5v-2h5v2zm0 4h-5v-2h5v2zM19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.1 0-2 .9-2 2v-.01C3 5.44 3.45 5 4 5h16c.55 0 1 .44 1 .99V6c0-1.1-.9-2-2-2z"/></svg>
-                        <h3>Rappels Flexibles</h3>
-                        <p>Recevez des notifications utiles et non intrusives, configurables pour s'adapter parfaitement à votre emploi du temps.</p>
-                    </div>
-                    <div class="feature-slide">
-                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-                        <h3>Vue Hebdomadaire Claire</h3>
-                        <p>Visualisez vos progrès et vos réussites d'un seul coup d'œil grâce à un affichage coloré et motivant.</p>
-                    </div>
-                    <div class="feature-slide">
-                        <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <h3>Localisateur d'Objets</h3>
-                        <p>Ne perdez plus de temps ! Utilisez le module "Où est mon truc ?" pour retrouver facilement vos affaires importantes.</p>
-                    </div>
-                     <div class="feature-slide">
-                         <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52-.4 1.08-.73 1.69-.98l.38-2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                        <h3>P.E.T</h3>
-                        <p>Petit Expert Tactic : Votre allié stratégique pour identifier et vous concentrer sur les tâches réellement essentielles.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            © 2025 Flowbit. Tous droits réservés.
+    <section class="relative min-h-screen flex items-center justify-center flex-col lg:flex-row gap-10">
+        <div class="absolute inset-0 z-0">
+            <img src="images/long.png" alt="Flowbit Multiple Screens" class="w-full h-full object-cover blur-md opacity-100">
         </div>
-    </footer>
+        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10">
+            <div class="text-center lg:text-left fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6" data-en="Organize your mind.<br>Move at your own pace.">Organise ton esprit.<br>Avance à ton rythme.</h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-8" data-en="Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough.">Flowbit t'aide à créer, suivre et réussir tes habitudes et tâches, même quand la concentration est difficile.</p>
+                <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="inline-block px-8 py-4 bg-[#86c5ff] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Get started for free">Commencer gratuitement</a>
+                <a href="whyexpo.html" class="text-sm text-gray-400 hover:text-white border border-gray-600 rounded px-3 py-1 transition">Pourquoi Expo&nbsp;?</a>
+            </div>
+            <div class="w-80 h-96 rounded-2xl shadow-lg overflow-hidden fade-in">
+                <img src="images/mock.png" alt="Flowbit Hero Mockup" class="object-cover w-full h-full">
+            </div>
+        </div>
+    </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $(document).ready(function(){
-            $('.slider-container').slick({
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4000,
-                arrows: false,
-                pauseOnHover: true,
-                adaptiveHeight: false
-            });
+    <section class="py-20 fade-in">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div>
+                <span class="text-4xl">📋</span>
+                <h3 class="text-xl font-semibold mb-2" data-en="Create easily">Créer facilement</h3>
+                <p class="text-gray-400 text-sm" data-en="Simplify creating your habits and tasks.">Simplifie ta création d'habitudes et de tâches.</p>
+            </div>
+            <div>
+                <span class="text-4xl">⚡</span>
+                <h3 class="text-xl font-semibold mb-2" data-en="Stay motivated">Rester motivé</h3>
+                <p class="text-gray-400 text-sm" data-en="Stay on track even when it's hard.">Garde le cap même quand c'est difficile.</p>
+            </div>
+            <div>
+                <span class="text-4xl">🚡</span>
+                <h3 class="text-xl font-semibold mb-2" data-en="Get unstuck fast">Se débloquer rapidement</h3>
+                <p class="text-gray-400 text-sm" data-en="A boost when you need it most.">Un coup de pouce quand tu en as besoin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#111111] py-20 fade-in">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-80 h-96 overflow-hidden rounded-2xl shadow-lg">
+                <img src="images/mock2.png" alt="Flowbit Habits View" class="object-cover w-full h-full">
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
+                    <h4 class="text-lg font-medium text-gray-300" data-en="Daily habit tracking">Suivi des habitudes jour par jour</h4>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
+                    <h4 class="text-lg font-medium text-gray-300" data-en="'I'm stuck' mode to pick for you">Mode ‘je suis bloqué’ pour choisir pour toi</h4>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
+                    <h4 class="text-lg font-medium text-gray-300" data-en="Ultra simple and fast to-do list">To-do list ultra simple et rapide</h4>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
+                    <h4 class="text-lg font-medium text-gray-300" data-en="Gentle, smart reminders">Rappels doux et intelligents</h4>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
+                    <h4 class="text-lg font-medium text-gray-300" data-en="Dark theme and custom colors">Thème sombre et couleurs personnalisables</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-28 fade-in">
+        <div class="flex flex-col items-center gap-8 text-center">
+            <h2 class="text-4xl font-bold" data-en="Don't let your ideas get lost.<br>Take control with Flowbit.">Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.</h2>
+            <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="inline-block px-8 py-4 bg-[#f7aef8] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Try Flowbit now">Tester Flowbit maintenant</a>
+        </div>
+    </section>
+</main>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
-    </script>
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const toggleBtn = document.getElementById('lang-toggle');
+    function setLang(lang) {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            const current = el.innerHTML;
+            const alt = el.getAttribute('data-en');
+            el.setAttribute('data-en', current);
+            el.innerHTML = alt;
+        });
+        document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
+            const current = meta.getAttribute('content') || meta.innerText;
+            const alt = meta.getAttribute('data-en');
+            meta.setAttribute('data-en', current);
+            if (meta.tagName === 'TITLE') meta.innerText = alt;
+            else meta.setAttribute('content', alt);
+        });
+        localStorage.setItem('lang', lang);
+        toggleBtn.textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
+    }
+    toggleBtn.addEventListener('click', () => {
+        const currentLang = localStorage.getItem('lang') || 'fr';
+        const newLang = currentLang === 'en' ? 'fr' : 'en';
+        setLang(newLang);
+    });
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
+    if (savedLang === 'en') setLang('en');
+</script>
+
 </body>
 </html>

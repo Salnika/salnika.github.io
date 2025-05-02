@@ -1,19 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowbit - Cultivez vos habitudes</title>
-    <meta name="description" content="Téléchargez Flowbit facilement via Expo Go. Application intuitive pour les personnes avec TDAH.">
-    <meta property="og:title" content="Installer Flowbit - Application TDAH">
-    <meta property="og:description" content="Scannez le QR code pour installer Flowbit via Expo Go.">
+    <title data-en="Flowbit - Grow your habits">Flowbit - Cultivez vos habitudes</title>
+    <meta name="description" content="Téléchargez Flowbit facilement via Expo Go. Application intuitive pour les personnes avec TDAH." data-en="Download Flowbit easily via Expo Go. An intuitive app designed for people with ADHD.">
+    <meta property="og:title" content="Installer Flowbit - Application TDAH" data-en="Install Flowbit - ADHD App">
+    <meta property="og:description" content="Scannez le QR code pour installer Flowbit via Expo Go." data-en="Scan the QR code to install Flowbit via Expo Go.">
     <meta property="og:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
     <meta property="og:url" content="http://www.flowbit.ratpi-studio.fr/getExpo.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installer Flowbit - Application TDAH">
-    <meta name="twitter:description" content="Scannez le QR code pour télécharger Flowbit avec Expo Go.">
+    <meta name="twitter:title" content="Installer Flowbit - Application TDAH" data-en="Install Flowbit - ADHD App">
+    <meta name="twitter:description" content="Scannez le QR code pour télécharger Flowbit avec Expo Go." data-en="Scan the QR code to download Flowbit using Expo Go.">
     <meta name="twitter:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
     <link rel="canonical" href="http://www.flowbit.ratpi-studio.fr/getExpo.html">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
@@ -39,71 +38,108 @@
         .text-icon-default { color: #cccccc; }
         .heading-lg { font-size: 1.125rem; line-height: 1.75rem; }
         .icon-md { width: 1.5rem; height: 1.5rem; }
-
+        #lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+        }
     </style>
     <script>
-        const APP_URL = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/76b3becb-2a38-4645-8167-0bfd722b8afd'; // Lien Expo
-
+        const APP_URL = 'exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/d37988b4-310f-40c8-919d-c39e937cd0a9';
         function getStoreUrl() {
             const isAndroid = /android/i.test(navigator.userAgent);
             return isAndroid
-                ? 'https://play.google.com/store/apps/details?id=host.exp.exponent' // Google Play
-                : 'https://apps.apple.com/us/app/expo-go/id982107779'; // App Store
+                ? 'https://play.google.com/store/apps/details?id=host.exp.exponent'
+                : 'https://apps.apple.com/us/app/expo-go/id982107779';
         }
-
         function tryOpenApp() {
             window.location.href = APP_URL;
         }
-
         function redirectToStore() {
             window.location.href = getStoreUrl();
         }
-
-
     </script>
 </head>
 <body>
-
-    <div class="rounded-md border border-secondary bg-default shadow-xs min-w-[320px] sm:min-w-[500px] w-full max-w-lg">
-        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4">
-            <div class="flex items-center justify-between gap-y-3 max-md-gutters:flex-col max-md-gutters:items-start">
-                <div class="grid overflow-hidden">
-                    <div class="grid items-center gap-3 overflow-hidden grid-cols-[min-content,auto]">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-md text-icon-default shrink-0" role="img">
-                            <g> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12.0001L2 14.5001L11.6422 19.3212C11.7734 19.3868 11.839 19.4196 11.9078 19.4325C11.9687 19.4439 12.0313 19.4439 12.0922 19.4325C12.161 19.4196 12.2266 19.3868 12.3578 19.3212L22 14.5001L17 12.0001M2 9.50006L11.6422 4.67895C11.7734 4.61336 11.839 4.58056 11.9078 4.56766C11.9687 4.55622 12.0313 4.55622 12.0922 4.56766C12.161 4.58056 12.2266 4.61336 12.3578 4.67895L22 9.50006L12.3578 14.3212C12.2266 14.3868 12.161 14.4196 12.0922 14.4325C12.0313 14.4439 11.9687 14.4439 11.9078 14.4325C11.839 14.4196 11.7734 14.3868 11.6422 14.3212L2 9.50006Z"></path> </g>
-                        </svg>
-                        <h3 class="text-default font-semibold heading-lg">Preview update</h3>
-                    </div>
+  <button id="lang-toggle">FR | EN</button>
+  <div class="rounded-md border border-secondary bg-default shadow-xs min-w-[320px] sm:min-w-[500px] w-full max-w-lg">
+    <div class="border-b border-b-secondary px-6 py-5">
+        <div class="flex items-center justify-between">
+            <div class="grid overflow-hidden">
+                <div class="grid items-center gap-3 grid-cols-[min-content,auto]">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-md text-icon-default shrink-0" role="img">
+                        <g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12.0001L2 14.5001L11.6422 19.3212C11.7734 19.3868 11.839 19.4196 11.9078 19.4325C11.9687 19.4439 12.0313 19.4439 12.0922 19.4325C12.161 19.4196 12.2266 19.3868 12.3578 19.3212L22 14.5001L17 12.0001M2 9.50006L11.6422 4.67895C11.7734 4.61336 11.839 4.58056 11.9078 4.56766C11.9687 4.55622 12.0313 4.55622 12.0922 4.56766C12.161 4.58056 12.2266 4.61336 12.3578 4.67895L22 9.50006L12.3578 14.3212C12.2266 14.3868 12.161 14.4196 12.0922 14.4325C12.0313 14.4439 11.9687 14.4439 11.9078 14.4325C11.839 14.4196 11.7734 14.3868 11.6422 14.3212L2 9.50006Z"></path></g>
+                    </svg>
+                    <h3 class="text-default font-semibold heading-lg" data-en="Preview update">Preview update</h3>
                 </div>
             </div>
         </div>
-        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4"  style="position: relative;">
-            <p class="text-default font-medium break-words">Flowbit App Preview</p>
-            <div class="flex justify-between gap-6 mt-2">
-                <p class="text-secondary flex-initial text-sm">Runtime version</p>
-                <p class="text-secondary w-full flex-1 truncate text-right text-sm"><img width="50px" style="position: absolute;right: 20px;top: 20px;" src="./assets/icon.png"></p>
-            </div>
-            <div class="flex justify-between mt-1">
-                <p class="text-secondary text-sm">Published: Apr 15, 2025 07:03 PM UTC</p>
-            </div>
+    </div>
+    <div class="border-b border-b-secondary px-6 py-5 relative">
+        <p class="text-default font-medium" data-en="Flowbit App Preview">Flowbit App Preview</p>
+        <div class="flex justify-between gap-6 mt-2">
+            <p class="text-secondary text-sm" data-en="Runtime version">Runtime version</p>
+            <p class="text-secondary text-sm text-right w-full truncate">
+              <img width="50px" style="position: absolute;right: 20px;top: 20px;" src="./assets/icon.png">
+            </p>
         </div>
-        <div class="border-b border-b-secondary px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
-            <p class="text-default">Scannez le QR code avec l'appareil où Expo Go est installé :</p>
-            <div class="relative flex items-center justify-center">
-                <img src="https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=76b3becb-2a38-4645-8167-0bfd722b8afd&host=u.expo.dev" class="size-[250px]" alt="QR Code pour ouvrir dans Expo Go">
-                <img src="./assets/icon.png" width="40px" style="position: absolute;">
-            </div>
-        </div>
-        <div class="px-6 py-5 max-md-gutters:py-4 flex flex-col gap-3">
-            <p class="text-default text-sm mb-1">Ou utilisez ces options :</p>
-            <button onclick="tryOpenApp()" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
-                Ouvrir dans Expo Go
-            </button>
-            <button onclick="redirectToStore()" class="w-full text-center bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">
-                Installer Expo Go (Store)
-            </button>
+        <div class="flex justify-between mt-1">
+            <p class="text-secondary text-sm" data-en="Published: Apr 13, 2025 10:26 AM UTC">Published: Apr 13, 2025 10:26 AM UTC</p>
         </div>
     </div>
-
+    <div class="border-b border-b-secondary px-6 py-5 flex flex-col gap-3">
+        <p class="text-default" data-en="Scan the QR code with the device where Expo Go is installed:">Scannez le QR code avec l'appareil où Expo Go est installé :</p>
+        <div class="relative flex items-center justify-center">
+            <img src="https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=d37988b4-310f-40c8-919d-c39e937cd0a9&host=u.expo.dev" class="size-[250px]" alt="QR Code">
+            <img src="./assets/icon.png" width="40px" style="position: absolute;">
+        </div>
+    </div>
+    <div class="px-6 py-5 flex flex-col gap-3">
+        <p class="text-default text-sm mb-1" data-en="Or use these options:">Ou utilisez ces options :</p>
+        
+        
+        <button onclick="tryOpenApp()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150" data-en="Open in Expo Go">Ouvrir dans Expo Go</button>
+        <button onclick="redirectToStore()" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded transition duration-150" data-en="Install Expo Go (Store)">Installer Expo Go (Store)</button>
+        <div class="px-6 py-5 flex flex-col gap-3">
+            <a href="whyexpo.html" class="w-full text-center bg-transparent border border-gray-600 text-white font-medium py-2 px-4 rounded transition duration-150 hover:bg-gray-700" data-en="Why use Expo?">Pourquoi Expo&nbsp;?</a>
+        </div>
+    </div>
+  </div>
+  <script>
+    const toggleBtn = document.getElementById('lang-toggle');
+    function setLang(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const current = el.innerHTML;
+        const alt = el.getAttribute('data-en');
+        el.setAttribute('data-en', current);
+        el.innerHTML = alt;
+      });
+      document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
+        const current = meta.getAttribute('content') || meta.innerText;
+        const alt = meta.getAttribute('data-en');
+        meta.setAttribute('data-en', current);
+        if (meta.tagName === 'TITLE') meta.innerText = alt;
+        else meta.setAttribute('content', alt);
+      });
+      localStorage.setItem('lang', lang);
+      toggleBtn.textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
+    }
+    toggleBtn.addEventListener('click', () => {
+      const currentLang = localStorage.getItem('lang') || 'fr';
+      const newLang = currentLang === 'en' ? 'fr' : 'en';
+      setLang(newLang);
+    });
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
+    if (savedLang === 'en') setLang('en');
+  </script>
 </body>
 </html>

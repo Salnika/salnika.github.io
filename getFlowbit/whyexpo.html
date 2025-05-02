@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="Why use Expo?">Pourquoi passer par Expo&nbsp;?</title>
+  <meta name="description" content="Flowbit est partagé via Expo Go pour vous permettre d'y accéder facilement, sans attendre sa validation sur les stores." data-en="Flowbit is shared via Expo Go so you can access it easily, before it's available on official stores.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #121212; color: #ffffff; }
+    #lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ffffff;
+      color: #000000;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-6">
+  <button id="lang-toggle">FR | EN</button>
+  <div class="max-w-2xl text-center space-y-6">
+    <h1 class="text-4xl font-bold" data-en="Why is Flowbit shared through Expo Go?">Pourquoi Flowbit est partagé via Expo Go&nbsp;?</h1>
+    <p class="text-gray-300" data-en="Because it's not yet on the official app stores!">Parce qu'elle n'est pas encore sur les stores officiels&nbsp;!</p>
+
+    <p class="text-gray-400" data-en="Flowbit is still in active development. Sharing it via Expo Go allows me to let you test it easily without waiting for Apple and Google validation.">Flowbit est encore en développement actif. Le partage via Expo Go me permet de vous la faire tester facilement sans attendre la validation par Apple ou Google.</p>
+
+    <p class="text-gray-400" data-en="By using Expo Go, you get direct access to the latest version and can give feedback faster. It's secure and used by thousands of developers.">En passant par Expo Go, vous accédez directement à la dernière version et vous pouvez me faire des retours rapidement. C'est sûr, et utilisé par des milliers de développeurs.</p>
+
+    <p class="text-gray-400" data-en="As soon as Flowbit is stable enough, it will be available on iOS and Android stores.">Dès que Flowbit est assez stable, elle sera disponible sur les stores iOS et Android.</p>
+
+    <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="inline-block mt-6 px-6 py-3 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition" data-en="Back to install page">Retour à la page d'installation</a>
+  </div>
+  <script>
+    const toggleBtn = document.getElementById('lang-toggle');
+    function setLang(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const current = el.innerHTML;
+        const alt = el.getAttribute('data-en');
+        el.setAttribute('data-en', current);
+        el.innerHTML = alt;
+      });
+      document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
+        const current = meta.getAttribute('content') || meta.innerText;
+        const alt = meta.getAttribute('data-en');
+        meta.setAttribute('data-en', current);
+        if (meta.tagName === 'TITLE') meta.innerText = alt;
+        else meta.setAttribute('content', alt);
+      });
+      localStorage.setItem('lang', lang);
+      toggleBtn.textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
+    }
+    toggleBtn.addEventListener('click', () => {
+      const currentLang = localStorage.getItem('lang') || 'fr';
+      const newLang = currentLang === 'en' ? 'fr' : 'en';
+      setLang(newLang);
+    });
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
+    if (savedLang === 'en') setLang('en');
+  </script>
+</body>
+</html>
