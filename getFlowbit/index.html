@@ -1,179 +1,162 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Flowbit : L'application pensée pour le TDAH. Organisez vos tâches, suivez vos habitudes et développez votre concentration facilement." data-en="Flowbit: The app designed for ADHD. Organize tasks, track habits, and boost focus effortlessly.">
-    <meta name="keywords" content="application TDAH, productivité TDAH, habitudes TDAH, gestion des tâches, Flowbit app">
-    <meta name="author" content="Flowbit">
-    <meta property="og:title" content="Flowbit - Application pour Cultiver Vos Habitudes" data-en="Flowbit - Grow Your Habits">
-    <meta property="og:description" content="L'application intuitive pour un esprit clair et organisé. Conçue pour le TDAH." data-en="The intuitive app for a clear and organized mind. Designed for ADHD.">
-    <meta property="og:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
-    <meta property="og:url" content="http://www.flowbit.ratpi-studio.fr/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Flowbit - Application pour Cultiver Vos Habitudes" data-en="Flowbit - Grow Your Habits">
-    <meta name="twitter:description" content="L'application intuitive pensée pour un esprit clair et concentré, dédiée au TDAH." data-en="The intuitive app designed for a clear and focused mind, dedicated to ADHD.">
-    <meta name="twitter:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
-    <meta name="google-site-verification" content="0KpBGF4ACCbsLhz1rX8POy3SYfsGvEh8y0ZzuK3bu3U">
-    <link rel="canonical" href="https://www.flowbit.ratpi-studio.fr/">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #lang-toggle {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            z-index: 50;
-            background: #fff;
-            color: #000;
-            border: 1px solid #ccc;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Flowbit - Application pour Cultiver Vos Habitudes">Flowbit - Application pour Cultiver Vos Habitudes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #lang-toggle {
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #lang-toggle:hover {
+      background: #ccc;
+      color: #000;
+    }
+    .blur-edge {
+      position: relative;
+    }
+    .blur-edge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      backdrop-filter: blur(6px);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body class="bg-[#0d0d0d] text-gray-200">
 
-<button id="lang-toggle">FR | EN</button>
-
-<main class="relative overflow-hidden container max-w-7xl mx-auto px-6 lg:px-8">
-    <header class="relative z-20 flex items-center justify-between py-6 fade-in">
-        <div class="flex items-center gap-4">
-            <img src="images/logo.png" alt="Flowbit Logo" class="h-12 w-12 rounded-full">
-            <span class="text-2xl font-bold text-gray-100" data-en="Flowbit">Flowbit</span>
-        </div>
+  <main class="relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <header class="relative z-20 flex flex-col sm:flex-row sm:items-center justify-between py-6 fade-in gap-4 sm:gap-0">
+      <div class="flex items-center gap-4">
+        <img src="https://salnika.github.io/getFlowbit/assets/logo-2.png" alt="Flowbit Logo" class="h-12 w-12 rounded-full">
+        <span class="text-2xl font-bold text-gray-100" data-en="Flowbit">Flowbit</span>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
         <a href="whyexpo.html" class="text-sm text-gray-400 hover:text-white border border-gray-600 rounded px-3 py-1 transition" data-en="Why Expo?">Pourquoi Expo&nbsp;?</a>
+        <button id="lang-toggle">
+          <span id="lang-flag">🇬🇧</span><span>EN | FR</span>
+        </button>
+      </div>
     </header>
 
-    <section class="relative min-h-screen flex items-center justify-center flex-col lg:flex-row gap-10">
-        <div class="absolute inset-0 z-0">
-            <img src="images/long.png" alt="Flowbit Multiple Screens" class="w-full h-full object-cover blur-md opacity-100">
-        </div>
-        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10">
-            <div class="text-center lg:text-left fade-in">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6" data-en="Organize your mind.<br>Move at your own pace.">Organise ton esprit.<br>Avance à ton rythme.</h1>
-                <p class="text-lg md:text-xl text-gray-400 mb-8" data-en="Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough.">Flowbit t'aide à créer, suivre et réussir tes habitudes et tâches, même quand la concentration est difficile.</p>
-                <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="inline-block px-8 py-4 bg-[#86c5ff] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Get started for free">Commencer gratuitement</a>
-                <a href="whyexpo.html" class="text-sm text-gray-400 hover:text-white border border-gray-600 rounded px-3 py-1 transition">Pourquoi Expo&nbsp;?</a>
-            </div>
-            <div class="w-80 h-96 rounded-2xl shadow-lg overflow-hidden fade-in">
-                <img src="images/mock.png" alt="Flowbit Hero Mockup" class="object-cover w-full h-full">
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex flex-col-reverse lg:flex-row items-center justify-center gap-10 py-10">
+      <div class="absolute inset-0 z-0">
+        <img src="https://salnika.github.io/getFlowbit/assets/long.png" alt="Background" class="w-full h-full object-cover blur-md opacity-100">
+      </div>
+      <div class="relative z-10 text-center lg:text-left max-w-xl fade-in">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-snug" data-en="Organize your mind.<br>Move at your own pace.">Organize your mind.<br>Move at your own pace.</h1>
+        <p class="text-lg md:text-xl text-gray-400 mb-8" data-en="Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough.">Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough.</p>
+        <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="px-8 py-3 bg-[#86c5ff] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform inline-block" data-en="Get started for free">Commencer gratuitement</a>
+      </div>
+      <div class="relative z-10 w-full max-w-xs lg:max-w-sm rounded-2xl shadow-lg overflow-hidden fade-in blur-edge">
+        <img src="https://salnika.github.io/getFlowbit/assets/mock.png" alt="Flowbit Hero Mockup" class="object-cover w-full h-full">
+      </div>
     </section>
 
+    <!-- Features -->
     <section class="py-20 fade-in">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-            <div>
-                <span class="text-4xl">📋</span>
-                <h3 class="text-xl font-semibold mb-2" data-en="Create easily">Créer facilement</h3>
-                <p class="text-gray-400 text-sm" data-en="Simplify creating your habits and tasks.">Simplifie ta création d'habitudes et de tâches.</p>
-            </div>
-            <div>
-                <span class="text-4xl">⚡</span>
-                <h3 class="text-xl font-semibold mb-2" data-en="Stay motivated">Rester motivé</h3>
-                <p class="text-gray-400 text-sm" data-en="Stay on track even when it's hard.">Garde le cap même quand c'est difficile.</p>
-            </div>
-            <div>
-                <span class="text-4xl">🚡</span>
-                <h3 class="text-xl font-semibold mb-2" data-en="Get unstuck fast">Se débloquer rapidement</h3>
-                <p class="text-gray-400 text-sm" data-en="A boost when you need it most.">Un coup de pouce quand tu en as besoin.</p>
-            </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
+        <div>
+          <span class="text-4xl">📋</span>
+          <h3 class="text-xl font-semibold mb-2" data-en="Create easily">Créer facilement</h3>
+          <p class="text-gray-400 text-sm" data-en="Simplify creating your habits and tasks.">Simplifie ta création d'habitudes et de tâches.</p>
         </div>
+        <div>
+          <span class="text-4xl">⚡</span>
+          <h3 class="text-xl font-semibold mb-2" data-en="Stay motivated">Rester motivé</h3>
+          <p class="text-gray-400 text-sm" data-en="Stay on track even when it's hard.">Garde le cap même quand c'est difficile.</p>
+        </div>
+        <div>
+          <span class="text-4xl">🚡</span>
+          <h3 class="text-xl font-semibold mb-2" data-en="Get unstuck fast">Se débloquer rapidement</h3>
+          <p class="text-gray-400 text-sm" data-en="A boost when you need it most.">Un coup de pouce quand tu en as besoin.</p>
+        </div>
+
+
+              <div>
+  <span class="text-4xl">🎨</span>
+  <h3 class="text-xl font-semibold mb-2" data-en="Customize freely">Personnalise à fond</h3>
+  <p class="text-gray-400 text-sm" data-en="Pick your own colors and make it feel like yours.">Choisis tes couleurs et crée ton ambiance.</p>
+</div>
+      </div>
     </section>
 
-    <section class="bg-[#111111] py-20 fade-in">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="w-80 h-96 overflow-hidden rounded-2xl shadow-lg">
-                <img src="images/mock2.png" alt="Flowbit Habits View" class="object-cover w-full h-full">
-            </div>
-            <div class="flex flex-col gap-6">
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
-                    <h4 class="text-lg font-medium text-gray-300" data-en="Daily habit tracking">Suivi des habitudes jour par jour</h4>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
-                    <h4 class="text-lg font-medium text-gray-300" data-en="'I'm stuck' mode to pick for you">Mode ‘je suis bloqué’ pour choisir pour toi</h4>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
-                    <h4 class="text-lg font-medium text-gray-300" data-en="Ultra simple and fast to-do list">To-do list ultra simple et rapide</h4>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
-                    <h4 class="text-lg font-medium text-gray-300" data-en="Gentle, smart reminders">Rappels doux et intelligents</h4>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-[#86c5ff] rounded-full mt-2"></div>
-                    <h4 class="text-lg font-medium text-gray-300" data-en="Dark theme and custom colors">Thème sombre et couleurs personnalisables</h4>
-                </div>
-            </div>
-        </div>
+    <!-- CTA Final -->
+    <section class="py-28 fade-in text-center">
+      <h2 class="text-4xl font-bold mb-6" data-en="Don't let your ideas get lost.<br>Take control with Flowbit.">Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.</h2>
+      <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="px-8 py-4 bg-[#f7aef8] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Try Flowbit now">Tester Flowbit maintenant</a>
     </section>
+  </main>
 
-    <section class="py-28 fade-in">
-        <div class="flex flex-col items-center gap-8 text-center">
-            <h2 class="text-4xl font-bold" data-en="Don't let your ideas get lost.<br>Take control with Flowbit.">Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.</h2>
-            <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="inline-block px-8 py-4 bg-[#f7aef8] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Try Flowbit now">Tester Flowbit maintenant</a>
-        </div>
-    </section>
-</main>
-
-<script>
+  <script>
     const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     const toggleBtn = document.getElementById('lang-toggle');
-    function setLang(lang) {
-        document.querySelectorAll('[data-en]').forEach(el => {
-            const current = el.innerHTML;
-            const alt = el.getAttribute('data-en');
-            el.setAttribute('data-en', current);
-            el.innerHTML = alt;
-        });
-        document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
-            const current = meta.getAttribute('content') || meta.innerText;
-            const alt = meta.getAttribute('data-en');
-            meta.setAttribute('data-en', current);
-            if (meta.tagName === 'TITLE') meta.innerText = alt;
-            else meta.setAttribute('content', alt);
-        });
-        localStorage.setItem('lang', lang);
-        toggleBtn.textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
-    }
-    toggleBtn.addEventListener('click', () => {
-        const currentLang = localStorage.getItem('lang') || 'fr';
-        const newLang = currentLang === 'en' ? 'fr' : 'en';
-        setLang(newLang);
-    });
-    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
-    if (savedLang === 'en') setLang('en');
-</script>
+    const langFlag = document.getElementById('lang-flag');
 
+    function setLang(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const current = el.innerHTML;
+        const alt = el.getAttribute('data-en');
+        el.setAttribute('data-en', current);
+        el.innerHTML = alt;
+      });
+      document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
+        const current = meta.getAttribute('content') || meta.innerText;
+        const alt = meta.getAttribute('data-en');
+        meta.setAttribute('data-en', current);
+        if (meta.tagName === 'TITLE') meta.innerText = alt;
+        else meta.setAttribute('content', alt);
+      });
+      localStorage.setItem('lang', lang);
+      toggleBtn.querySelector('span:last-child').textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
+      langFlag.textContent = lang === 'en' ? '🇬🇧' : '🇫🇷';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const currentLang = localStorage.getItem('lang') || 'fr';
+      const newLang = currentLang === 'en' ? 'fr' : 'en';
+      setLang(newLang);
+    });
+
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
+    setLang(savedLang);
+  </script>
 </body>
 </html>
