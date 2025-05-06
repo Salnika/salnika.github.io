@@ -34,28 +34,41 @@
             75% { transform: rotate(-1deg); }
             100% { transform: rotate(0deg); }
         }
+
+        .lang-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: 1px solid white;
+            padding: 5px 10px;
+            color: white;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <button id="lang-toggle" class="lang-switch">FR | EN</button>
+
         <header>
             <div class="logo-container glitch-container">
-                 <img id="random-logo" src="" alt="Logo RATPI Studio" class="logo">
-             </div>
+                <img id="random-logo" src="" alt="Logo RATPI Studio" class="logo">
+            </div>
             <h1 class="glitch-text" data-text="RATPI Studio">RATPI Studio</h1>
         </header>
 
         <main>
             <section id="mission">
-                <h2>Nos Missions_</h2>
-                <p>
+                <h2 data-en="Our Missions_">Nos Missions_</h2>
+                <p data-en="Develop video games and interactive apps to raise <strong>awareness</strong>, <strong>support</strong> and <strong>empower</strong> mental health. We make it accessible, <em>fun</em> and <em>inclusive</em> for everyone!">
                     Développer des jeux vidéo et des applications interactives pour
                     <strong>sensibiliser</strong>, <strong>soutenir</strong> et
                     <strong>accompagner</strong> dans le domaine de la santé mentale.
                     On rend ça accessible, <em>ludique</em> et <em>inclusif</em> pour tout le monde !
                 </p>
-              
-              <p>
+                <p data-en="Publish games and apps to give <strong>visibility</strong>, <strong>support</strong>, and <strong>empower</strong> developers. We <em>share</em> our passion.">
                     Editer des jeux vidéo et des applications interactives pour donner de la
                     <strong>visibilitée</strong>, <strong>soutenir</strong> et
                     <strong>accompagner</strong> les developpeurs. On <em>partage</em> notre passion.
@@ -64,13 +77,13 @@
         </main>
 
         <footer>
-            <p>© 2025 RATPI Studio // Ready to play?</p>
+            <p data-en="© 2025 RATPI Studio // Ready to play?">© 2025 RATPI Studio // Ready to play?</p>
             <p><a href="mailto:contact@ratpi-studio.fr" class="email-link">contact@ratpi-studio.fr</a></p>
         </footer>
     </div>
 
     <script>
-         const images = [
+        const images = [
             'assets/1.png',
             'assets/2.gif',
             'assets/3.gif',
@@ -83,18 +96,31 @@
 
         function changeImage() {
             logo.classList.add('glitch-effect', 'shake-effect');
-            
             logo.src = images[currentIndex];
             currentIndex = (currentIndex + 1) % images.length;
-
             setTimeout(() => {
                 logo.classList.remove('glitch-effect', 'shake-effect');
             }, 300);
         }
 
         changeImage();
-
         setInterval(changeImage, 5000);
+
+        // Lang Switch
+        const toggleBtn = document.getElementById('lang-toggle');
+        let isFrench = true;
+
+        toggleBtn.addEventListener('click', () => {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const current = el.innerHTML;
+                const alt = el.getAttribute('data-en');
+                el.setAttribute('data-en', current);
+                el.innerHTML = alt;
+            });
+            isFrench = !isFrench;
+            toggleBtn.textContent = isFrench ? 'FR | EN' : 'EN | FR';
+        });
     </script>
 </body>
 </html>
