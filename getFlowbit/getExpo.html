@@ -1,154 +1,211 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title data-en="Flowbit - Grow your habits">Flowbit - Cultivez vos habitudes</title>
-  <meta name="description" content="Téléchargez Flowbit facilement via Expo Go. Application intuitive pour les personnes avec TDAH." data-en="Download Flowbit easily via Expo Go. An intuitive app designed for people with ADHD.">
-  <meta property="og:title" content="Installer Flowbit - Application TDAH" data-en="Install Flowbit - ADHD App">
-  <meta property="og:description" content="Scannez le QR code pour installer Flowbit via Expo Go." data-en="Scan the QR code to install Flowbit via Expo Go.">
-  <meta property="og:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
-  <meta property="og:url" content="http://www.flowbit.ratpi-studio.fr/getExpo.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Installer Flowbit - Application TDAH" data-en="Install Flowbit - ADHD App">
-  <meta name="twitter:description" content="Scannez le QR code pour télécharger Flowbit avec Expo Go." data-en="Scan the QR code to download Flowbit using Expo Go.">
-  <meta name="twitter:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png">
-  <link rel="canonical" href="http://www.flowbit.ratpi-studio.fr/getExpo.html">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="assets/favicon_io/site.webmanifest">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @property --rotate { syntax: "<angle>"; initial-value: 132deg; inherits: false }
-    :root { --card-min-height: 450px; --card-max-width: 500px }
-    .magic-card {
-      background: #191c29;
-      padding: 3px;
-      position: relative;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      font-size: 1em;
-      color: #fff;
-      font-family: Inter, sans-serif;
-      width: 100%;
-      max-width: var(--card-max-width);
-      min-height: var(--card-min-height);
-      box-sizing: border-box;
-      margin: auto;
-      border: 1px solid #2c2f45;
-    }
-    .magic-card::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      border-radius: 6px;
-      background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      animation: spin 2.5s linear infinite;
-    }
-    .magic-card::after {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      margin: auto;
-      transform: scale(.95);
-      filter: blur(30px);
-      background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-      opacity: 1;
-      transition: opacity .5s;
-      animation: spin 2.5s linear infinite;
-      border-radius: 6px;
-    }
-    @keyframes spin { 0% { --rotate: 0deg } 100% { --rotate: 360deg } }
-  </style>
-</head>
-<body class="bg-[#212534] text-white min-h-screen flex flex-col items-center justify-center p-6">
-  <button id="lang-toggle" class="absolute top-4 right-4 px-3 py-1 bg-white text-black font-semibold rounded">FR | EN</button>
-
-  <!-- Choix de la plateforme -->
-  <div class="flex gap-4 mb-6">
-    <button id="btn-ios" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded font-semibold">iPhone / iOS</button>
-    <button id="btn-android" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded font-semibold">Android</button>
-  </div>
-
-  <!-- Container de la carte -->
-  <div id="platform-card" class="magic-card p-6 w-full" style="display:none;">
-    <!-- Logo -->
-    <img src="assets/icon.png" alt="Logo Flowbit" class="mb-4 w-16 h-16">
-
-    <!-- Contenu iOS -->
-    <div id="content-ios" style="display:none; width:100%;">
-      <h1 class="text-xl font-bold mb-2">Téléchargement Flowbit pour iOS</h1>
-      <p class="text-sm text-gray-400 mb-1">Version de l'application</p>
-      <p class="text-sm mb-2">0.5.7</p>
-      <p class="text-sm text-gray-400 mb-1">Version runtime</p>
-      <p class="text-sm mb-2">53.0.0</p>
-      <p class="text-sm text-gray-400 mb-1">Publié le</p>
-      <p class="text-sm mb-4">May 06, 2025</p>
-      <p class="mb-2">Scannez ce QR code pour installer via Expo Go :</p>
-      <div class="flex justify-center mb-4">
-        <img src="https://qr.expo.dev/eas-update?slug=exp&projectId=08470710-02c1-4827-966a-be03b078f5ff&groupId=b410e7a9-e016-42e0-b482-8c5a07d452b7&host=u.expo.dev" alt="QR Code Expo" class="w-64 h-64">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-en="Flowbit - Grow your habits">Flowbit - Cultivez vos habitudes</title>
+    <meta
+      name="description"
+      content="Téléchargez Flowbit facilement via Expo Go ou Android APK. Application intuitive pour les personnes avec TDAH."
+      data-en="Download Flowbit easily via Expo Go or Android APK. An intuitive app designed for people with ADHD."
+    />
+    <meta property="og:title" content="Installer Flowbit - Application TDAH" data-en="Install Flowbit - ADHD App" />
+    <meta
+      property="og:description"
+      content="Scannez le QR code pour installer Flowbit via Expo Go ou Android APK."
+      data-en="Scan the QR code to install Flowbit via Expo Go or Android APK."
+    />
+    <meta property="og:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png" />
+    <meta property="og:url" content="http://www.flowbit.ratpi-studio.fr/getFlowbit.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Installer Flowbit - Application TDAH"
+      data-en="Install Flowbit - ADHD App"
+    />
+    <meta
+      name="twitter:description"
+      content="Scannez le QR code pour télécharger Flowbit avec Expo Go ou Android APK."
+      data-en="Scan the QR code to download Flowbit using Expo Go or Android APK."
+    />
+    <meta name="twitter:image" content="http://www.flowbit.ratpi-studio.fr/assets/logo.png" />
+    <link rel="canonical" href="http://www.flowbit.ratpi-studio.fr/getFlowbit.html" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @property --rotate {
+        syntax: "<angle>";
+        initial-value: 132deg;
+        inherits: false;
+      }
+      :root {
+        --card-min-height: 450px;
+        --card-max-width: 500px;
+      }
+      .magic-card {
+        background: #191c29;
+        padding: 3px;
+        position: relative;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 1em;
+        color: #fff;
+        font-family: Inter, sans-serif;
+        width: 100%;
+        max-width: var(--card-max-width);
+        min-height: var(--card-min-height);
+        box-sizing: border-box;
+        margin: auto;
+        border: 1px solid #2c2f45;
+      }
+      .magic-card::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-image: linear-gradient(
+          var(--rotate),
+          #5ddcff,
+          #3c67e3 43%,
+          #4e00c2
+        );
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        animation: spin 2.5s linear infinite;
+      }
+      .magic-card::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        margin: auto;
+        transform: scale(0.95);
+        filter: blur(30px);
+        background-image: linear-gradient(
+          var(--rotate),
+          #5ddcff,
+          #3c67e3 43%,
+          #4e00c2
+        );
+        opacity: 1;
+        transition: opacity 0.5s;
+        animation: spin 2.5s linear infinite;
+        border-radius: 6px;
+      }
+      @keyframes spin {
+        0% { --rotate: 0deg; }
+        100% { --rotate: 360deg; }
+      }
+    </style>
+  </head>
+  <body class="bg-[#212534] text-white min-h-screen flex flex-col items-center justify-center p-6">
+    <button
+      id="lang-toggle"
+      class="absolute top-4 right-4 px-3 py-1 bg-white text-black font-semibold rounded"
+    >
+      FR | EN
+    </button>
+    <div class="flex gap-4 mb-6">
+      <button
+        id="btn-ios"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded font-semibold"
+      >
+        iPhone / iOS
+      </button>
+      <button
+        id="btn-android"
+        class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded font-semibold"
+      >
+        Android
+      </button>
+    </div>
+    <div id="platform-card" class="magic-card p-6 w-full" style="display: none">
+      <img src="assets/icon.png" alt="Logo Flowbit" class="mb-4 w-16 h-16" />
+      <div id="content-ios" style="width: 100%; display: none">
+        <h1 class="text-xl font-bold mb-2">Téléchargement Flowbit pour iOS</h1>
+        <p class="text-sm text-gray-400 mb-1" data-en="App version">Version de l'application</p>
+        <p class="text-sm mb-2">1.0.11</p>
+        <p class="text-sm text-gray-400 mb-1" data-en="Runtime version">Version runtime</p>
+        <p class="text-sm mb-2">53.0.0</p>
+        <p class="text-sm text-gray-400 mb-1" data-en="Published on">Publié le</p>
+        <p class="text-sm mb-4">
+          <span data-en="May 8, 2025">8 mai 2025</span>
+        </p>
+        <p class="mb-4" data-en="Download Flowbit directly from the App Store:">Téléchargez Flowbit directement depuis l'App Store :</p>
+        <div class="flex justify-center mb-4">
+          <img src="assets/qrcode-appstore.png" alt="QR Code App Store" class="w-64 h-64" />
+        </div>
+        <div class="flex justify-center mb-4">
+          <a href="https://apps.apple.com/us/app/flowbit/id6745567617?itscg=30200&itsct=apps_box_badge&mttnsubad=6745567617" style="display: inline-block;">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/fr-fr?releaseDate=1746662400" alt="Download on the App Store" style="width: 261px; height: 82px; vertical-align: middle; object-fit: contain;" />
+          </a>
+        </div>
       </div>
-      <div class="flex flex-col gap-2 w-full">
-        <button onclick="window.location.href='exp://u.expo.dev/08470710-02c1-4827-966a-be03b078f5ff/group/b410e7a9-e016-42e0-b482-8c5a07d452b7'" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Ouvrir dans Expo Go</button>
-        <button onclick="window.location.href='https://apps.apple.com/us/app/expo-go/id982107779'" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded">Installer Expo Go (Store)</button>
+      <div id="content-android" style="width: 100%; display: none">
+        <h1 class="text-xl font-bold mb-2" data-en="Download Flowbit for Android">Téléchargement Flowbit pour Android</h1>
+        <p class="text-sm text-gray-400 mb-1"  data-en="App version" >Version de l'application</p>
+        <p class="text-sm mb-2">1.0.0</p>
+        <p class="text-sm text-gray-400 mb-1" data-en="Published on">Publié le</p>
+        <p class="text-sm mb-4">
+          <span data-en="May 8, 2025">8 mai 2025</span>
+        </p>
+        <p class="mb-2"  data-en="Scan the QR code to get the APK">Scannez ce QR code pour télécharger l’APK :</p>
+        <div class="flex justify-center mb-4">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.11.apk"
+            alt="QR Code APK"
+            class="w-64 h-64"
+          />
+        </div>
+        <button
+          onclick='window.location.href="https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.11.apk"'
+          class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded"
+          data-en="Download Flowbit APK"
+        >
+          Télécharger APK Flowbit
+        </button>
       </div>
     </div>
-
-    <!-- Contenu Android -->
-    <div id="content-android" style="display:none; width:100%;">
-      <h1 class="text-xl font-bold mb-2">Téléchargement Flowbit pour Android</h1>
-      <p class="text-sm text-gray-400 mb-1">Version de l'application</p>
-      <p class="text-sm mb-2">1.0.0</p>
-      <p class="text-sm text-gray-400 mb-1">Publié le</p>
-      <p class="text-sm mb-4">May 06, 2025</p>
-      <p class="mb-2">Scannez ce QR code pour télécharger l’APK :</p>
-      <div class="flex justify-center mb-4">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.0.apk" alt="QR Code APK" class="w-64 h-64">
-      </div>
-      <button onclick="window.location.href='https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.0.apk'" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">Télécharger APK Flowbit</button>
-    </div>
-  </div>
-
-  <script>
-    // Langue
-    const toggleBtn = document.getElementById("lang-toggle");
-    function setLang(lang) {
-      document.querySelectorAll("[data-en]").forEach(el => {
-        const curr = el.innerHTML;
-        const alt = el.getAttribute("data-en");
-        el.setAttribute("data-en", curr);
-        el.innerHTML = lang === 'en' ? alt : curr;
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('lang-toggle');
+        function setLang(lang) {
+          document.querySelectorAll('[data-en]').forEach(el => {
+            const curr = el.innerHTML;
+            const alt = el.getAttribute('data-en');
+            if (alt !== null) { // Vérifie si l'attribut 'data-en' existe avant de l'échanger
+              el.setAttribute('data-en', curr);
+              el.innerHTML = alt;
+            }
+          });
+          localStorage.setItem('lang', lang);
+          toggleBtn.textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
+        }
+        toggleBtn.addEventListener('click', () => setLang(localStorage.getItem('lang') === 'fr' ? 'en' : 'fr'));
+        setLang(localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr'));
+        document.getElementById('btn-ios').addEventListener('click', () => {
+          document.getElementById('platform-card').style.display = 'flex';
+          document.getElementById('content-ios').style.display = 'block';
+          document.getElementById('content-android').style.display = 'none';
+        });
+        document.getElementById('btn-android').addEventListener('click', () => {
+          document.getElementById('platform-card').style.display = 'flex';
+          document.getElementById('content-ios').style.display = 'none';
+          document.getElementById('content-android').style.display = 'block';
+        });
       });
-      toggleBtn.textContent = lang === "en" ? "EN | FR" : "FR | EN";
-      localStorage.setItem("lang", lang);
-    }
-    toggleBtn.addEventListener("click", () => setLang(localStorage.getItem("lang")==="fr"?"en":"fr"));
-    setLang(localStorage.getItem("lang") || (navigator.language.startsWith("en")?"en":"fr"));
-
-    // Affichage plateforme
-    document.getElementById("btn-ios").addEventListener("click", ()=>{
-      document.getElementById("platform-card").style.display = 'flex';
-      document.getElementById("content-ios").style.display = 'block';
-      document.getElementById("content-android").style.display = 'none';
-    });
-    document.getElementById("btn-android").addEventListener("click", ()=>{
-      document.getElementById("platform-card").style.display = 'flex';
-      document.getElementById("content-ios").style.display = 'none';
-      document.getElementById("content-android").style.display = 'block';
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

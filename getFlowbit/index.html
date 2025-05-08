@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-en="Flowbit - Habit Tracker App">Flowbit - Application pour Cultiver Vos Habitudes</title>
+  <title data-en="Flowbit - Habit Tracker App" data-fr="Flowbit - Application pour Cultiver Vos Habitudes">Flowbit - Application pour Cultiver Vos Habitudes</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -56,63 +56,76 @@
     <header class="relative z-20 flex flex-col sm:flex-row sm:items-center justify-between py-6 fade-in gap-4 sm:gap-0">
       <div class="flex items-center gap-4">
         <img src="https://salnika.github.io/getFlowbit/assets/logo-2.png" alt="Flowbit Logo" class="h-12 w-12 rounded-full">
-        <span class="text-2xl font-bold text-gray-100" data-en="Flowbit">Flowbit</span>
+        <span class="text-2xl font-bold text-gray-100" data-en="Flowbit" data-fr="Flowbit">Flowbit</span>
       </div>
       <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-        <a href="whyexpo.html" class="text-sm text-gray-400 hover:text-white border border-gray-600 rounded px-3 py-1 transition" data-en="Why Expo?">Pourquoi Expo&nbsp;?</a>
         <button id="lang-toggle">
-          <span id="lang-flag">🇬🇧</span><span>EN | FR</span>
+          <span id="lang-flag">🇬🇧</span>
         </button>
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[80vh] flex flex-col-reverse lg:flex-row items-center justify-center gap-10 py-10">
+    <section class="relative min-h-[80vh] flex flex-col lg:flex-row items-center justify-center gap-10 py-10">
       <div class="absolute inset-0 z-0">
         <img src="https://salnika.github.io/getFlowbit/assets/long.png" alt="Background" class="w-full h-full object-cover blur-md opacity-100">
       </div>
-      <div class="relative z-10 text-center lg:text-left max-w-xl fade-in">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-snug" data-en="Organize your mind.<br>Move at your own pace.">Organise ton esprit.<br>Avance à ton rythme.</h1>
-        <p class="text-lg md:text-xl text-gray-400 mb-8" data-en="Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough.">Flowbit vous aide à créer, suivre et réussir vos habitudes et tâches, même quand la concentration est difficile.</p>
-        <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="px-8 py-3 bg-[#86c5ff] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform inline-block" data-en="Get started for free">Commencer gratuitement</a>
+      <div class="relative z-10 text-center lg:text-left max-w-xl fade-in order-1">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-snug" data-en="Organize your mind.<br>Move at your own pace." data-fr="Organise ton esprit.<br>Avance à ton rythme.">Organise ton esprit.<br>Avance à ton rythme.</h1>
+        <p class="text-lg md:text-xl text-gray-400 mb-8" data-en="Flowbit helps you build, track, and succeed with your habits and tasks, even when focus is tough." data-fr="Flowbit vous aide à créer, suivre et réussir vos habitudes et tâches, même quand la concentration est difficile.">Flowbit vous aide à créer, suivre et réussir vos habitudes et tâches, même quand la concentration est difficile.</p>
+        <div class="flex flex-col sm:flex-row gap-4 items-center mb-8">
+          <a href="https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.11.apk" class="px-8 py-3 bg-[#A4C639] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform inline-block" data-en="Download on Android" data-fr="Télécharger pour Android">Télécharger pour Android</a>
+          <a href="https://apps.apple.com/us/app/flowbit/id6745567617?itscg=30200&itsct=apps_box_badge&mttnsubad=6745567617" style="display: inline-block;">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/fr-fr?releaseDate=1746662400" alt="Download on the App Store" style="width: 261px; height: 82px; vertical-align: middle; object-fit: contain;">
+          </a>
+        </div>
       </div>
-      <div class="relative z-10 w-full max-w-xs lg:max-w-sm rounded-2xl shadow-lg overflow-hidden fade-in blur-edge">
+      <div class="relative z-10 w-full max-w-xs lg:max-w-sm rounded-2xl shadow-lg overflow-hidden fade-in blur-edge order-2 lg:order-3">
         <img src="https://salnika.github.io/getFlowbit/assets/mock.png" alt="Flowbit Hero Mockup" class="object-cover w-full h-full">
       </div>
     </section>
 
     <!-- Features -->
     <section class="py-20 fade-in">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
         <div>
           <span class="text-4xl">📋</span>
-          <h3 class="text-xl font-semibold mb-2" data-en="Create easily">Créer facilement</h3>
-          <p class="text-gray-400 text-sm" data-en="Simplify creating your habits and tasks.">Simplifie ta création d'habitudes et de tâches.</p>
+          <h3 class="text-xl font-semibold mb-2" data-en="Create easily" data-fr="Créer facilement">Créer facilement</h3>
+          <p class="text-gray-400 text-sm" data-en="Simplify creating your habits and tasks." data-fr="Simplifie ta création d'habitudes et de tâches.">Simplifie ta création d'habitudes et de tâches.</p>
         </div>
         <div>
           <span class="text-4xl">⚡</span>
-          <h3 class="text-xl font-semibold mb-2" data-en="Stay motivated">Rester motivé</h3>
-          <p class="text-gray-400 text-sm" data-en="Stay on track even when it's hard.">Garde le cap même quand c'est difficile.</p>
+          <h3 class="text-xl font-semibold mb-2" data-en="Stay motivated" data-fr="Rester motivé">Rester motivé</h3>
+          <p class="text-gray-400 text-sm" data-en="Stay on track even when it's hard." data-fr="Garde le cap même quand c'est difficile.">Garde le cap même quand c'est difficile.</p>
         </div>
         <div>
           <span class="text-4xl">🚡</span>
-          <h3 class="text-xl font-semibold mb-2" data-en="Get unstuck fast">Se débloquer rapidement</h3>
-          <p class="text-gray-400 text-sm" data-en="A boost when you need it most.">Un coup de pouce quand tu en as besoin.</p>
+          <h3 class="text-xl font-semibold mb-2" data-en="Get unstuck fast" data-fr="Se débloquer rapidement">Se débloquer rapidement</h3>
+          <p class="text-gray-400 text-sm" data-en="A boost when you need it most." data-fr="Un coup de pouce quand tu en as besoin.">Un coup de pouce quand tu en as besoin.</p>
         </div>
         <div>
           <span class="text-4xl">🎨</span>
-          <h3 class="text-xl font-semibold mb-2" data-en="Customize freely">Personnalise à fond</h3>
-          <p class="text-gray-400 text-sm" data-en="Pick your own colors and make it feel like yours.">Choisis tes couleurs et crée ton ambiance.</p>
+          <h3 class="text-xl font-semibold mb-2" data-en="Customize freely" data-fr="Personnalise à fond">Personnalise à fond</h3>
+          <p class="text-gray-400 text-sm" data-en="Pick your own colors and make it feel like yours." data-fr="Choisis tes couleurs et crée ton ambiance.">Choisis tes couleurs et crée ton ambiance.</p>
         </div>
       </div>
     </section>
 
     <!-- CTA Final -->
     <section class="py-28 fade-in text-center">
-      <h2 class="text-4xl font-bold mb-6" data-en="Don't let your ideas get lost.<br>Take control with Flowbit.">Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.</h2>
-      <a href="https://salnika.github.io/getFlowbit/getExpo.html" class="px-8 py-4 bg-[#f7aef8] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform" data-en="Try Flowbit now">Tester Flowbit maintenant</a>
+      <h2 class="text-4xl font-bold mb-6" data-en="Don't let your ideas get lost.<br>Take control with Flowbit." data-fr="Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.">Ne laisse plus tes idées se perdre.<br>Prends le contrôle avec Flowbit.</h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-2 margin-auto">
+      <a href="https://flowbit.ratpi-studio.fr/apk/flowbit-1.0.11.apk" class="px-8 py-3 bg-[#A4C639] text-black font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-transform inline-block" data-en="Download on Android" data-fr="Télécharger pour Android">Télécharger pour Android</a>
+      <a href="https://apps.apple.com/us/app/flowbit/id6745567617?itscg=30200&itsct=apps_box_badge&mttnsubad=6745567617" style="display: inline-block;">
+        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/fr-fr?releaseDate=1746662400" alt="Download on the App Store" style="width: 261px; height: 82px; vertical-align: middle; object-fit: contain;">
+      </a>
+      </div>
+      <div id="ratpi-badge-script-container"></div>
     </section>
+  
   </main>
+ 
+<script src="https://ratpi-studio.github.io/ratpi-badge/minified/badge.min.js"></script>
 
   <script>
     const observer = new IntersectionObserver(entries => {
@@ -129,32 +142,40 @@
     const langFlag = document.getElementById('lang-flag');
 
     function setLang(lang) {
+      console.log(`Setting language to: ${lang}`);
       document.querySelectorAll('[data-en]').forEach(el => {
-        const current = el.innerHTML;
-        const alt = el.getAttribute('data-en');
-        el.setAttribute('data-en', current);
-        el.innerHTML = alt;
+        const altEn = el.getAttribute('data-en');
+        const altFr = el.getAttribute('data-fr');
+        console.log(`Element: ${el.tagName}, EN: ${altEn}, FR: ${altFr}`);
+        if (lang === 'en' && altEn) {
+          el.innerHTML = altEn;
+        } else if (lang === 'fr' && altFr) {
+          el.innerHTML = altFr;
+        }
       });
       document.querySelectorAll('meta[data-en], title[data-en]').forEach(meta => {
-        const current = meta.getAttribute('content') || meta.innerText;
-        const alt = meta.getAttribute('data-en');
-        meta.setAttribute('data-en', current);
-        if (meta.tagName === 'TITLE') meta.innerText = alt;
-        else meta.setAttribute('content', alt);
+        const altEn = meta.getAttribute('data-en');
+        const altFr = meta.getAttribute('data-fr');
+        if (lang === 'en' && altEn) {
+          if (meta.tagName === 'TITLE') meta.innerText = altEn;
+          else meta.setAttribute('content', altEn);
+        } else if (lang === 'fr' && altFr) {
+          if (meta.tagName === 'TITLE') meta.innerText = altFr;
+          else meta.setAttribute('content', altFr);
+        }
       });
-      localStorage.setItem('lang', lang);
       toggleBtn.querySelector('span:last-child').textContent = lang === 'en' ? 'EN | FR' : 'FR | EN';
       langFlag.textContent = lang === 'en' ? '🇬🇧' : '🇫🇷';
     }
 
     toggleBtn.addEventListener('click', () => {
-      const currentLang = localStorage.getItem('lang') || 'fr';
+      const currentLang = langFlag.textContent === '🇬🇧' ? 'en' : 'fr';
       const newLang = currentLang === 'en' ? 'fr' : 'en';
+      console.log(`Language changed to: ${newLang}`);
       setLang(newLang);
     });
 
-    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('en') ? 'en' : 'fr');
-    setLang(savedLang);
+    setLang('fr');
   </script>
 </body>
 </html>
